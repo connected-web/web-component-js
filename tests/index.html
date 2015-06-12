@@ -2,9 +2,71 @@
 <html>
 <head>
   <title>Web Component Examples - Index</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.3/handlebars.js"></script>
+  <script src="https://cdn.rawgit.com/Markavian/web-component/1.0/lib/web-component.js"></script>
 </head>
 <body>
   <h1>Web Component</h1>
-  <p>Web component examples, index of cool stuff you can do:</p>
+  <p>Web component examples, index of cool stuff you can do. <viewsource>View source to learn more.</viewsource></p>
+
+  <h2>Requirements</h2>
+  <requirement name="WebComponent" link="https://cdn.rawgit.com/Markavian/web-component/1.0/lib/web-component.js">
+    Hands back the keys to the content writer, joining templates to custom-tags, allowing you to recraft your documents client side, and quickly connect templates to data.
+  </requirement>
+
+  <requirement name="jQuery" link="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js">
+    Used for selecting elements from the document, and AJAX requests for loading data from remote sources.
+  </requirement>
+
+  <requirement name="Handlebars" link="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.3/handlebars.js">
+    Used for putting values into templates, great for processing arrays of values and basic conditional templating.
+  </requirement>
+
+  <demo name="Example">An example of content wrapped up in a custom <code>demo</code> tag.</demo>
+
+  <demo name="Person Template">
+    <person name="John Beech" age="30" city="Manchester"></person>
+    <person name="Charlotte" age="17" city="Mitakihara"></person>
+    <person name="Fate Testarossa" age="22" city="Cranagan"></person>
+    <person name="Nanoha Takamachi" age="23" city="Uminari City"></person>
+  </demo>
+
+  <!-- Templates -->
+  <template tagName="demo">
+    <h2>{{name}}</h2>
+    <p>{{content}}</p>
+  </template>
+
+  <template tagName="pair">
+    <b>{{key}}</b>: <i>{{value}}</i>
+  </template>
+
+  <template tagName="person">
+    <div>
+      <h3>{{name}}</h3>
+      <ul>
+        <li><pair key="Age" value="{{age}}"></pair></li>
+        <li><pair key="City" value="{{city}}"></pair></li>
+      </ul>
+    </div>
+  </template>
+
+  <template tagName="requirement">
+    <h3>{{name}}</h3>
+    <p><i>{{link}}</i> : {{content}}</p>
+  </template>
+
+  <template tagName="instruction">
+    <span style="font-weight: bold;">{{content}}</span>
+  </template>
+
+  <template tagName="viewsource">
+    <a href="javascript:(window.location='view-source:'+window.location)">
+      <instruction>
+        {{content}}
+      </instruction>
+    </a>
+  </template>
 </body>
 </html>

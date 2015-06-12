@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Web Component Examples - Index</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.3/handlebars.js"></script>
+  <script src="https://cdn.rawgit.com/Markavian/web-component/1.0/lib/web-component.js"></script>
+</head>
+<body>
+  <h1>Web Component</h1>
+  <p>More web component examples, showing cool stuff you can do by configuring templates to load data. <viewsource>View source to learn more.</viewsource></p>
+
+  <h2>Data Loading</h2>
+
+  <demo name="Credits Example">
+    <p>An example of loading JSON using a <code>credits</code> template:</p>
+    <credits data-source-url="data/credits.json" ></credits>
+  </demo>
+
+  <!-- Templates -->
+  <template tagName="demo">
+    <h2>{{name}}</h2>
+    <p>{{content}}</p>
+  </template>
+
+  <template tagName="credits" data-source-type="json">
+    <p>Credits for <b>cached data from {{data-source-url}}</b>: </p>
+    <p>
+    {{#each data}}
+      <a href="{{html_url}}">
+        <button class="btn btn-primary">
+          <img src="{{avatar}}" alt="{{name}}" style="max-height: 30px;" />
+          {{name}}
+          <span class="badge">{{commits}}</span>
+        </button>
+      </a>
+    {{/each}}
+    </p>
+    <pre>{{dataSourceStatus}}</pre>
+  </template>
+
+  <template tagName="viewsource">
+    <a href="javascript:(window.location='view-source:'+window.location)">
+      <instruction>
+        {{content}}
+      </instruction>
+    </a>
+  </template>
+</body>
+</html>
