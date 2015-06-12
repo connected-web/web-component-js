@@ -14,7 +14,7 @@
 
   <demo name="Credits Example">
     <p>An example of loading JSON using a <code>credits</code> template:</p>
-    <credits data-source-url="data/credits.json" ></credits>
+    <credits credits-file="data/credits.json" ></credits>
   </demo>
 
   <!-- Templates -->
@@ -23,7 +23,7 @@
     <p>{{content}}</p>
   </template>
 
-  <template tagName="credits" data-source-type="json">
+  <template tagName="credits" data-source-template="https://cdn.rawgit.com/Markavian/web-component/master/tests/{{credits-file}}" data-source-type="json">
     <p>Credits for <b>cached data from {{data-source-url}}</b>: </p>
     <p>
     {{#each data}}
