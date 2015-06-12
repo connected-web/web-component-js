@@ -4,7 +4,7 @@
   <title>Web Component Examples - Index</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.3/handlebars.js"></script>
-  <script src="https://cdn.rawgit.com/Markavian/web-component/1.0/lib/web-component.js"></script>
+  <script src="https://cdn.rawgit.com/Markavian/web-component/1.0.1/lib/web-component.js"></script>
 </head>
 <body>
   <h1>Web Component</h1>
@@ -23,17 +23,15 @@
     <p>{{content}}</p>
   </template>
 
-  <template tagName="credits" data-source-template="https://cdn.rawgit.com/Markavian/web-component/master/tests/{{credits-file}}" data-source-type="json">
+  <template tagName="credits" data-source-template="https://cdn.rawgit.com/Markavian/web-component/1.0.1/tests/{{credits-file}}" data-source-type="json">
     <p>Credits for <b>cached data from {{data-source-url}}</b>: </p>
     <p>
     {{#each data}}
-      <a href="{{html_url}}">
-        <button class="btn btn-primary">
-          <img src="{{avatar}}" alt="{{name}}" style="max-height: 30px;" />
-          {{name}}
-          <span class="badge">{{commits}}</span>
-        </button>
-      </a>
+      <link-button href="{{html_url}}">
+        <img src="{{avatar}}" alt="{{name}}" style="max-height: 30px;" height="30" />
+        {{name}}
+        <badge>{{commits}}</badge>
+      </link-button>
     {{/each}}
     </p>
     <pre>{{dataSourceStatus}}</pre>
@@ -47,31 +45,16 @@
     </a>
   </template>
 
-  <pre>
-  <script>
-  document.write(JSON.stringify(
-    [
-      {
-        name: "Markavian",
-        commits: 74,
-        avatar: "https://avatars.githubusercontent.com/u/1431385?v=3",
-        html_url: "https://github.com/Markavian"
-      },
-      {
-        name: "John Beech",
-        commits: 14,
-        avatar: "https://avatars.githubusercontent.com/u/6341696?v=3",
-        html_url: "https://github.com/johnbeech"
-      },
-      {
-        name: "Joel Howard",
-        commits: 6,
-        avatar: "https://avatars.githubusercontent.com/u/1258370?v=3",
-        html_url: "https://github.com/subsidel"
-      }
-    ]
-  ));
-  </script>
-  </pre>
+  <template tagName="link-button">
+    <a href="{{href}}">
+      <button class="btn btn-primary">
+        {{content}}
+      </button>
+    </a>
+  </template>
+
+  <template tagName="badge">
+    <b style="border-radius: 6px; background: black; color: white;">{{content}}</b>
+  </template>
 </body>
 </html>
