@@ -28,7 +28,7 @@
     <p>
     {{#each data}}
       <link-button href="{{html_url}}">
-        <img src="{{avatar}}" alt="{{name}}" style="max-height: 30px;" height="30" />
+        <img src="{{avatar}}" class="avatar" alt="{{name}}" height="30" />
         {{name}}
         <badge>{{commits}}</badge>
       </link-button>
@@ -36,6 +36,15 @@
     </p>
     <pre>{{dataSourceStatus}}</pre>
   </template>
+
+  <style for="credits">
+  img.avatar {
+    height: 30px;
+    max-height: 30px;
+    vertical-align: -10px;
+    border-radius: 2px;
+  }
+  </style>
 
   <template tagName="viewsource">
     <a href="javascript:(window.location='view-source:'+window.location)">
@@ -47,14 +56,39 @@
 
   <template tagName="link-button">
     <a href="{{href}}">
-      <button class="btn btn-primary">
+      <div>
         {{content}}
-      </button>
+      </div>
     </a>
   </template>
 
+  <style for="linkButton">
+  link-button {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #666;
+    background: #DDD;
+    cursor: pointer; display: inline-block;
+    font-family: sans-serif;
+    font-weight: bold;
+  }
+  link-button > a {
+    text-decoration: none;
+    color: black;
+  }
+  </style>
+
   <template tagName="badge">
-    <b style="border-radius: 6px; background: black; color: white;">{{content}}</b>
+    <b>{{content}}</b>
   </template>
+
+  <style for"badge">
+    badge > b {
+      border-radius: 6px;
+      background: red;
+      color: white;
+      padding: 4px;
+    }
+  </style>
 </body>
 </html>
