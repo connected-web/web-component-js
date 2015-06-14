@@ -4,10 +4,10 @@ A javascript library for adding data driven web components, via templates to a H
 
 Recent Releases
 ---------------
-Version 1.0.1 (Stable)
+**Version 1.0.1** (Stable)
 * https://cdn.rawgit.com/Markavian/web-component/1.0.1/lib/web-component.js
 
-Version 1.0 (Newborn)
+**Version 1.0** (Newborn)
 * https://cdn.rawgit.com/Markavian/web-component/1.0/lib/web-component.js
 
 Online Demos
