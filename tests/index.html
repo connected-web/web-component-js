@@ -5,14 +5,20 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.3/handlebars.js"></script>
   <script src="https://cdn.rawgit.com/Markavian/web-component/1.0/lib/web-component.js"></script>
+
+  <style for="page">
+    body { padding: 20px; font-family: sans-serif; }
+  </style>
+
 </head>
 <body>
   <h1>Web Component</h1>
+  <h2>Basic examples</h2>
   <p>Web component examples, index of cool stuff you can do. <viewsource>View source to learn more.</viewsource></p>
 
   <h2>Requirements</h2>
   <requirement name="WebComponent" link="https://cdn.rawgit.com/Markavian/web-component/1.0/lib/web-component.js">
-    Hands back the keys to the content writer, joining templates to custom-tags, allowing you to recraft your documents client side, and quickly connect templates to data.
+    Hands back the templating keys to content writer, or the stylist - joining templates to custom-tags, allowing you to recraft your documents client side, and quickly connect templates to data.
   </requirement>
 
   <requirement name="jQuery" link="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js">
@@ -43,19 +49,41 @@
   </template>
 
   <template tagName="person">
-    <div>
-      <h3>{{name}}</h3>
-      <ul>
-        <li><pair key="Age" value="{{age}}"></pair></li>
-        <li><pair key="City" value="{{city}}"></pair></li>
-      </ul>
-    </div>
+    <h3>{{name}}</h3>
+    <ul>
+      <li><pair key="Age" value="{{age}}"></pair></li>
+      <li><pair key="City" value="{{city}}"></pair></li>
+    </ul>
   </template>
+
+  <style for="person">
+    person {
+      display: inline-block;
+      min-width: 200px;
+      border: 1px solid #DDD; border-radius: 6px;
+      background-color: #EFD;
+      padding: 5px 20px;
+      margin: 5px 0;
+    }
+    person > h3 { margin-top: 0; text-align: center; }
+  </style>
 
   <template tagName="requirement">
     <h3>{{name}}</h3>
-    <p><i>{{link}}</i> : {{content}}</p>
+    <p><li><a href="{{link}}">{{link}}</a></li></p>
+    <p>{{content}}</p>
   </template>
+
+  <style for="requirement">
+    requirement {
+      display: block;
+      border: 1px solid #DDD; border-radius: 6px;
+      background-color: #CDF;
+      padding: 5px 10px;
+      margin: 5px 0;
+    }
+    requirement > h3 { margin-top: 0; }
+  </style>
 
   <template tagName="instruction">
     <span style="font-weight: bold;">{{content}}</span>
@@ -68,5 +96,11 @@
       </instruction>
     </a>
   </template>
+
+  <style for="viewsource">
+  viewsource > a { text-decoration: none; }
+  viewsource > a:hover { text-decoration: underline; }
+  </style>
+
 </body>
 </html>
