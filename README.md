@@ -10,6 +10,7 @@ Change Log
 ----------
 
 ### Master
+* Created change log
 * Added styles to credits.
 
 ### 1.0.1
