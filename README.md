@@ -20,5 +20,5 @@ Change Log
 * Statically linked data to CDN.
 * Added basic examples and data-loading example.
 * Created static HTML template for testing out web-component.js
-* Extracted component.hs from [product-monitor](https://github.com/johnbeech/product-monitor) project.
+* Extracted component.js from [product-monitor](https://github.com/johnbeech/product-monitor) project to make web-component.js.
 * Initial commit 
