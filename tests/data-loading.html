@@ -5,10 +5,15 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.3/handlebars.js"></script>
   <script src="https://cdn.rawgit.com/Markavian/web-component/1.0.1/lib/web-component.js"></script>
+
+  <style for="page">
+    body { padding: 20px; font-family: sans-serif; }
+  </style>
+
 </head>
 <body>
   <h1>Web Component</h1>
-  <p>More web component examples, showing cool stuff you can do by configuring templates to load data. <viewsource>View source to learn more.</viewsource></p>
+  <p>More web component examples, showing cool stuff you can do by configuring templates to load data.</p>
 
   <h2>Data Loading</h2>
 
@@ -17,14 +22,16 @@
     <credits credits-file="data/credits.json" ></credits>
   </demo>
 
+  <p>Interested? <viewsource>View source to learn more.</viewsource></p>
+
   <!-- Templates -->
   <template tagName="demo">
-    <h2>{{name}}</h2>
+    <h3>{{name}}</h3>
     <p>{{content}}</p>
   </template>
 
   <template tagName="credits" data-source-template="https://cdn.rawgit.com/Markavian/web-component/1.0.1/tests/{{credits-file}}" data-source-type="json">
-    <p>Credits for <b>cached data from {{data-source-url}}</b>: </p>
+    <p>Credits for <b>cached data from <a href="{{dataSourceUrl}}">{{dataSourceUrl}}</a></b>: </p>
     <p>
     {{#each data}}
       <link-button href="{{html_url}}">
@@ -38,12 +45,19 @@
   </template>
 
   <style for="credits">
-  img.avatar {
-    height: 30px;
-    max-height: 30px;
-    vertical-align: -10px;
-    border-radius: 2px;
-  }
+    credits {
+      display: inline-block;
+      border: 1px solid #DDD; border-radius: 6px;
+      padding: 5px 20px;
+    }
+    credits img.avatar {
+      height: 30px;
+      max-height: 30px;
+      vertical-align: -10px;
+      border-radius: 2px;
+    }
+    credits a { color: #370; text-decoration: none; }
+    credits a:hover { color: #490; }
   </style>
 
   <template tagName="viewsource">
@@ -54,8 +68,13 @@
     </a>
   </template>
 
+  <style for="viewsource">
+    viewsource > a { text-decoration: none; }
+    viewsource > a:hover { text-decoration: underline; }
+  </style>
+
   <template tagName="link-button">
-    <a href="{{href}}">
+    <a href="{{href}}" target="_linkButtonLink">
       <div>
         {{content}}
       </div>
@@ -67,15 +86,19 @@
     padding: 5px;
     border-radius: 5px;
     border: 1px solid #666;
-    background: #DDD;
     cursor: pointer; display: inline-block;
     font-family: sans-serif;
     font-weight: bold;
+
+    background-color: #DDD;
+    background: linear-gradient(to bottom, #EEE, #DDD);
   }
-  link-button > a {
-    text-decoration: none;
-    color: black;
+  link-button:hover {
+    background-color: #EEE;
+    background: linear-gradient(to bottom, #FFF, #DDD);
   }
+  link-button > a { color: black; text-decoration: none; }
+  link-button > a:hover {color: #222; }
   </style>
 
   <template tagName="badge">
