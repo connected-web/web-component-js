@@ -2,10 +2,23 @@ Web Component
 =============
 A javascript library for adding data driven web components, via templates to a HTML page.
 
-Releases
---------------
-* Version 1.0.1 (Stable) https://cdn.rawgit.com/Markavian/web-component/1.0.1/lib/web-component.js
-* Version 1.0 (Newborn) https://cdn.rawgit.com/Markavian/web-component/1.0/lib/web-component.js
+Recent Releases
+---------------
+Version 1.0.1 (Stable)
+* https://cdn.rawgit.com/Markavian/web-component/1.0.1/lib/web-component.js
+
+Version 1.0 (Newborn)
+* https://cdn.rawgit.com/Markavian/web-component/1.0/lib/web-component.js
+
+Online Demos
+------------
+* `index.html` : [Index - Unstyled Tests](https://cdn.rawgit.com/Markavian/web-component/1.0.1b/tests/)
+* `data-loading.html` : [Data Loading - Using Static Data](https://cdn.rawgit.com/Markavian/web-component/1.0.1b/tests/data-loading.html) - 
+* `data/credits.json` : [Static Data for Data Loading](https://cdn.rawgit.com/Markavian/web-component/1.0.1b/tests/data/credits.json) 
+
+Projects using Web Component
+----------------------------
+* [Product Monitor](https://github.com/johnbeech/product-monitor/) - for rendering pretty much everything client side.
 
 Change Log
 ----------
