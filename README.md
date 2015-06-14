@@ -12,7 +12,7 @@ Recent Releases
 
 Online Demos
 ------------
-* `index.html` : [Index - Unstyled Tests](https://cdn.rawgit.com/Markavian/web-component/1.0.1c/tests/index.html)
+* `index.html` : [Index - Basic Examples](https://cdn.rawgit.com/Markavian/web-component/1.0.1c/tests/index.html)
 * `data-loading.html` : [Data Loading - Using Static Data](https://cdn.rawgit.com/Markavian/web-component/1.0.1c/tests/data-loading.html)
 * `data/credits.json` : [Static Data for Data Loading](https://cdn.rawgit.com/Markavian/web-component/1.0.1c/tests/data/credits.json) 
 
@@ -24,6 +24,7 @@ Change Log
 ----------
 
 ### Master
+* Styled up example pages in Online Demos section
 * Created change log
 * Added styles to credits.
 
