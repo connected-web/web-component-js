@@ -13,7 +13,7 @@ Recent Releases
 Online Demos
 ------------
 * `index.html` : [Index - Unstyled Tests](https://cdn.rawgit.com/Markavian/web-component/1.0.1c/tests/index.html)
-* `data-loading.html` : [Data Loading - Using Static Data](https://cdn.rawgit.com/Markavian/web-component/1.0.1c/tests/data-loading.html) - 
+* `data-loading.html` : [Data Loading - Using Static Data](https://cdn.rawgit.com/Markavian/web-component/1.0.1c/tests/data-loading.html)
 * `data/credits.json` : [Static Data for Data Loading](https://cdn.rawgit.com/Markavian/web-component/1.0.1c/tests/data/credits.json) 
 
 Projects using Web Component
