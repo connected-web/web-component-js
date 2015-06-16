@@ -20,11 +20,11 @@ Dependencies
 
 What it can do
 --------------
-Web Component javascript library can turns custom HTML tags:
+Web Component is a javascript library that can turn custom HTML tags, for example:
 
 ![Web Component Data Loading Example Source](images/data-loading-example-source.png)
 
-Into rendered content, using client side JavaScript and template definitions:
+... into rendered content, using client side JavaScript, and template definitions:
 
 ![Web Component Data Loading Example](images/data-loading-example.png)
 
