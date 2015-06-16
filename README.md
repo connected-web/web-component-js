@@ -4,7 +4,10 @@ A javascript library for adding data driven web components, via templates to a H
 
 Recent Releases
 ---------------
-**Version 1.0.1** (Stable)
+**Version 1.1.0** (In field testing)
+* https://cdn.rawgit.com/Markavian/web-component/1.1.0/lib/web-component.js
+* 
+**Version 1.0.1** (Memory Leak)
 * https://cdn.rawgit.com/Markavian/web-component/1.0.1/lib/web-component.js
 
 **Version 1.0** (Newborn)
@@ -12,9 +15,10 @@ Recent Releases
 
 Online Demos
 ------------
-* `index.html` : [Index - Basic Examples](https://cdn.rawgit.com/Markavian/web-component/1.0.1c/tests/index.html)
-* `data-loading.html` : [Data Loading - Using Static Data](https://cdn.rawgit.com/Markavian/web-component/1.0.1c/tests/data-loading.html)
-* `data/credits.json` : [Static Data for Data Loading](https://cdn.rawgit.com/Markavian/web-component/1.0.1c/tests/data/credits.json)
+* `index.html` : [Index - Basic Examples](https://cdn.rawgit.com/Markavian/web-component/1.1.0/tests/index.html)
+* `data-loading.html` : [Data Loading - Using Static Data](https://cdn.rawgit.com/Markavian/web-component/1.1.0/tests/data-loading.html)
+* `data/credits.json` : [Static Data for Data Loading](https://cdn.rawgit.com/Markavian/web-component/1.1.0/tests/data/credits.json)
+* `tests/monitor-debug.html` : [Test Harness for Rendering](https://cdn.rawgit.com/Markavian/web-component/1.1.0/tests/monitor-debug.html)
 
 How to use
 ----------
