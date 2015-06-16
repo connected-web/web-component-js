@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>Web Component Examples - Monitor Status Debug</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
@@ -12,28 +13,32 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 
   <style for="page">
-    body { padding: 20px; font-family: sans-serif; }
+    body {
+      padding: 20px;
+      font-family: sans-serif;
+    }
   </style>
 
 </head>
+
 <body>
   <h1>Web Component</h1>
 
   <h2>Monitor Status Debug</h2>
-  <p>Debug page for hitting local server endpoint.</p>
+  <p>Test harness for hitting local server data.</p>
 
   <navigation data-source-url="data/navigation.json">
     <monitor-status name="product-monitor" data-source-url="data/monitorStatus.json">{{data-source-url}}</monitor-status>
   </navigation>
 
-  <template tagName="navigation" refresh-time="30">
+  <template for="navigation" refresh-time="30">
     <button type="button" class="btn btn-{{alertType}}">
       <span class="glyphicon glyphicon-{{glyphIcon}}"></span>
       <span>{{content}}</span>
     </button>
   </template>
 
-  <template tagName="monitor-status" refresh-time="5">
+  <template for="monitor-status" refresh-time="5">
     <button type="button" class="btn btn-{{alertType}}">
       <span class="glyphicon glyphicon-{{glyphIcon}}"></span>
       <span>{{content}}</span>
@@ -41,74 +46,73 @@
   </template>
 
   <script type="text/javascript">
-  $(function() {
-    var MonitorStatus = Component.configure("monitor-status");
+    $(function() {
+      var MonitorStatus = Component.configure("monitor-status");
 
-    MonitorStatus.prototype.serverAgeInSeconds = 0;
-    MonitorStatus.prototype.clientHash = false;
-    MonitorStatus.prototype.serverHash = false;
-    MonitorStatus.prototype.glyphIcon = 'dashboard';
+      MonitorStatus.prototype.serverAgeInSeconds = 0;
+      MonitorStatus.prototype.clientHash = false;
+      MonitorStatus.prototype.serverHash = false;
+      MonitorStatus.prototype.glyphIcon = 'dashboard';
 
-    MonitorStatus.prototype.reportRestartThenRestart = function() {
-      this.dataSourceStatus = "Monitor server has restarted, updating client shortly.";
+      MonitorStatus.prototype.reportRestartThenRestart = function() {
+        this.dataSourceStatus = "Monitor server has restarted, updating client shortly.";
 
-      setTimeout(function() {
-        location.reload(true);
-      }, 1500);
-    }
-
-    MonitorStatus.prototype.preRenderStep(function() {
-      this.serverHash = this.monitorHash || false;
-
-      if(this.dataSourceError !== false) {
-        this.alertType = "danger";
+        setTimeout(function() {
+          location.reload(true);
+        }, 1500);
       }
-      else if(this.clientHash == false) {
-        this.clientHash = this.serverHash || false;
-        this.alertType = "info";
-      }
-      else if(this.clientHash && this.clientHash != this.serverHash) {
-        this.alertType = "warning"
-        this.reportRestartThenRestart();
-      }
-      else {
-        this.alertType = "success";
-      }
+
+      MonitorStatus.prototype.preRenderStep(function() {
+        this.serverHash = this.monitorHash || false;
+
+        if (this.dataSourceError !== false) {
+          this.alertType = "danger";
+        } else if (this.clientHash == false) {
+          this.clientHash = this.serverHash || false;
+          this.alertType = "info";
+        } else if (this.clientHash && this.clientHash != this.serverHash) {
+          this.alertType = "warning"
+          this.reportRestartThenRestart();
+        } else {
+          this.alertType = "success";
+        }
+      });
     });
-  });
   </script>
 
+  <h3>Nested Data Loading Components</h3>
   <p>As the navigation component updates, which it does every 30 seconds, it spawns a new instance of the monitor-status component, which then proceeds to update every 5 seconds.</p>
   <p>Originally this caused a memory-leak where elements were loading data off-screen, and then rendering outside of the DOM.</p>
-  <p>This update loop should work much more predictably now. To monitor the render status, you can enable [render] level logging by setting <code>Component.logLevel(WebComponent.LogLevel.RENDER);</code> inside a script tag.</p>
+  <p>This update loop should work much more predictably now. To monitor the render status, you can enable [render] level logging by setting
+    <code>Component.logLevel(WebComponent.LogLevel.RENDER);</code> inside a script tag.</p>
 
   <h2>Testing components with custom templates</h2>
   <!-- Testing a component that no template -->
   <ul>
-  <virtual-component my-shirt-says="What in" language="English">
-    <li>The first shirt says: {{my-shirt-says}} in {{language}}?</li>
-  </virtual-component>
-
-  <virtual-component my-shirt-says="What in" language="Spanish">
-    <li>The second shirt says: {{my-shirt-says}} in {{language}}?</li>
-  </virtual-component>
-
-  <virtual-component my-shirt-says="What in" language="French">
-    <li>The third shirt says: {{my-shirt-says}} in {{language}}?</li>
-
-    <virtual-component my-shirt-says="What in" language="German">
-      <li>The fourth shirt says: {{my-shirt-says}} in {{language}}?</li>
+    <virtual-component my-shirt-says="What in" language="English">
+      <li>The first shirt says: {{my-shirt-says}} in {{language}}?</li>
     </virtual-component>
-  </virtual-component>
-</ul>
+
+    <virtual-component my-shirt-says="What in" language="Spanish">
+      <li>The second shirt says: {{my-shirt-says}} in {{language}}?</li>
+    </virtual-component>
+
+    <virtual-component my-shirt-says="What in" language="French">
+      <li>The third shirt says: {{my-shirt-says}} in {{language}}?</li>
+
+      <virtual-component my-shirt-says="What in" language="German">
+        <li>The fourth shirt says: {{my-shirt-says}} in {{language}}?</li>
+      </virtual-component>
+    </virtual-component>
+  </ul>
 
   <p>In the fourth example, there is a component nested inside a component template, which causes the fourth shirt says "French" instead of "German", this is because when the outside template is expanded, it also expands the inside template.</p>
 
   <script type="text/javascript">
-  $(function() {
-    var ComponentWithNoTemplate = Component.configure("virtual-component");
-    Component.scanForComponents();
-  });
+    $(function() {
+      var ComponentWithNoTemplate = Component.configure("virtual-component");
+      Component.scanForComponents();
+    });
   </script>
 
   <h2>Enable Logging</h2>
@@ -123,13 +127,18 @@
   <p>View source for some script examples showing how to set log levels.</p>
 
   <script type="text/javascript">
-  $(function() {
-    Component.logLevel(Component.LogLevel.RENDER);
-    Component.logLevel(Component.LogLevel.INFO);
-    Component.logLevel(Component.LogLevel.WARN);
-    Component.logLevel(Component.LogLevel.OFF);
-    Component.logLevel(0); // equivalent to off
-  });
+    $(function() {
+      Component.logLevel(Component.LogLevel.RENDER);
+      Component.logLevel(Component.LogLevel.INFO);
+      Component.logLevel(Component.LogLevel.WARN);
+      Component.logLevel(Component.LogLevel.OFF);
+      Component.logLevel(0); // equivalent to off
+    });
   </script>
+
+  <h2>Deprecation Warning</h2>
+  <p>Added a deprecation warning to encourage template writers to switch over from using the tagName attribute in &lt;template tagName="my-element"&gt; to &lt;template for="my-element"&gt;</p>
+  <pre>[Web Component] [warn] The attribute tagName, e.g. &lt;template tagName="monitor-status"&gt; will be deprecated in favour of &lt;template for="monitor-status"&gt; in web-component.js release 2.0.0. Please update your templates.</pre>
 </body>
+
 </html>
