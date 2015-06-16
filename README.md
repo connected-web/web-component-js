@@ -4,8 +4,8 @@ A javascript library for very simply adding data driven web components, via temp
 
 Recent Releases
 ---------------
-**Version 1.1.0** (In field testing)
-* https://cdn.rawgit.com/Markavian/web-component/1.1.0/lib/web-component.js
+**Version 1.1.1** (In field testing)
+* https://cdn.rawgit.com/Markavian/web-component/1.1.1/lib/web-component.js
 
 **Version 1.0.1** (Memory Leak, please upgrade)
 * https://cdn.rawgit.com/Markavian/web-component/1.0.1/lib/web-component.js
