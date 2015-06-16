@@ -26,7 +26,7 @@
     <monitor-status name="product-monitor" data-source-url="data/monitorStatus.json">{{data-source-url}}</monitor-status>
   </navigation>
 
-  <template tagName="navigation" refresh-time="20">
+  <template tagName="navigation" refresh-time="30">
     <button type="button" class="btn btn-{{alertType}}">
       <span class="glyphicon glyphicon-{{glyphIcon}}"></span>
       <span>{{content}}</span>
@@ -75,6 +75,60 @@
         this.alertType = "success";
       }
     });
+  });
+  </script>
+
+  <p>As the navigation component updates, which it does every 30 seconds, it spawns a new instance of the monitor-status component, which then proceeds to update every 5 seconds.</p>
+  <p>Originally this caused a memory-leak where elements were loading data off-screen, and then rendering outside of the DOM.</p>
+  <p>This update loop should work much more predictably now. To monitor the render status, you can enable [render] level logging by setting <code>Component.logLevel(WebComponent.LogLevel.RENDER);</code> inside a script tag.</p>
+
+  <h2>Testing components with custom templates</h2>
+  <!-- Testing a component that no template -->
+  <ul>
+  <virtual-component my-shirt-says="What in" language="English">
+    <li>The first shirt says: {{my-shirt-says}} in {{language}}?</li>
+  </virtual-component>
+
+  <virtual-component my-shirt-says="What in" language="Spanish">
+    <li>The second shirt says: {{my-shirt-says}} in {{language}}?</li>
+  </virtual-component>
+
+  <virtual-component my-shirt-says="What in" language="French">
+    <li>The third shirt says: {{my-shirt-says}} in {{language}}?</li>
+
+    <virtual-component my-shirt-says="What in" language="German">
+      <li>The fourth shirt says: {{my-shirt-says}} in {{language}}?</li>
+    </virtual-component>
+  </virtual-component>
+</ul>
+
+  <p>In the fourth example, there is a component nested inside a component template, which causes the fourth shirt says "French" instead of "German", this is because when the outside template is expanded, it also expands the inside template.</p>
+
+  <script type="text/javascript">
+  $(function() {
+    var ComponentWithNoTemplate = Component.configure("virtual-component");
+    Component.scanForComponents();
+  });
+  </script>
+
+  <h2>Enable Logging</h2>
+  <p>The following log levels are available:</p>
+  <ul>
+    <li>0: OFF - Console logging disabled</li>
+    <li>1: WARN - Template warnings</li>
+    <li>2: INFO - Data load information</li>
+    <li>3: RENDER - Detailed rendering information</li>
+  </ul>
+
+  <p>View source for some script examples showing how to set log levels.</p>
+
+  <script type="text/javascript">
+  $(function() {
+    Component.logLevel(Component.LogLevel.RENDER);
+    Component.logLevel(Component.LogLevel.INFO);
+    Component.logLevel(Component.LogLevel.WARN);
+    Component.logLevel(Component.LogLevel.OFF);
+    Component.logLevel(0); // equivalent to off
   });
   </script>
 </body>
