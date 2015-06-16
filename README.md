@@ -12,9 +12,9 @@ Recent Releases
 
 Online Demos
 ------------
-* `index.html` : [Index - Unstyled Tests](https://cdn.rawgit.com/Markavian/web-component/1.0.1b/tests/)
-* `data-loading.html` : [Data Loading - Using Static Data](https://cdn.rawgit.com/Markavian/web-component/1.0.1b/tests/data-loading.html) -
-* `data/credits.json` : [Static Data for Data Loading](https://cdn.rawgit.com/Markavian/web-component/1.0.1b/tests/data/credits.json)
+* `index.html` : [Index - Basic Examples](https://cdn.rawgit.com/Markavian/web-component/1.0.1c/tests/index.html)
+* `data-loading.html` : [Data Loading - Using Static Data](https://cdn.rawgit.com/Markavian/web-component/1.0.1c/tests/data-loading.html)
+* `data/credits.json` : [Static Data for Data Loading](https://cdn.rawgit.com/Markavian/web-component/1.0.1c/tests/data/credits.json)
 
 Projects using Web Component
 ----------------------------
@@ -34,6 +34,7 @@ Change Log
 ### Unreleased Changes
 * Changed default dataSourceType value to `false` from `jsonp`
 * Added monitor-debug test to investigate nested component memory-leak
+* Styled up example pages in Online Demos section
 * Created change log
 * Added styles to credits
 
