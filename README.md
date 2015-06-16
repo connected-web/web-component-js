@@ -31,9 +31,10 @@ Then open http://localhost:8080 in a web-browser of your choice.
 Change Log
 ----------
 
-### Master
+### Unreleased Changes
+* Added monitor-debug test to investigate nested component memory-leak
 * Created change log
-* Added styles to credits.
+* Added styles to credits
 
 ### 1.0.1
 * Added fail message to data loading based on jQuery spec.
