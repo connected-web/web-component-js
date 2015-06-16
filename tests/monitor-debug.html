@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Web Component Examples - Monitor Status Debug</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.3/handlebars.js"></script>
+  <script src="../lib/web-component.js"></script>
+
+  <!-- All the boostrap theming -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+  <style for="page">
+    body { padding: 20px; font-family: sans-serif; }
+  </style>
+
+</head>
+<body>
+  <h1>Web Component</h1>
+
+  <h2>Monitor Status Debug</h2>
+  <p>Debug page for hitting local server endpoint.</p>
+
+  <navigation data-source-url="data/navigation.json">
+    <monitor-status name="product-monitor" data-source-url="data/monitorStatus.json">{{data-source-url}}</monitor-status>
+  </navigation>
+
+  <template tagName="navigation" refresh-time="10">
+    <button type="button" class="btn btn-{{alertType}}">
+      <span class="glyphicon glyphicon-{{glyphIcon}}"></span>
+      <span>{{content}}</span>
+    </button>
+  </template>
+
+  <template tagName="monitor-status" refresh-time="15">
+    <button type="button" class="btn btn-{{alertType}}">
+      <span class="glyphicon glyphicon-{{glyphIcon}}"></span>
+      <span>{{content}}</span>
+    </button>
+  </template>
+
+  <script type="text/javascript">
+  $(function() {
+
+    var MonitorStatus = Component.configure("monitor-status");
+
+    MonitorStatus.prototype.serverAgeInSeconds = 0;
+    MonitorStatus.prototype.clientHash = false;
+    MonitorStatus.prototype.serverHash = false;
+    MonitorStatus.prototype.glyphIcon = 'dashboard';
+
+    MonitorStatus.prototype.reportRestartThenRestart = function() {
+      this.dataSourceStatus = "Monitor server has restarted, updating client shortly.";
+
+      setTimeout(function() {
+        location.reload(true);
+      }, 1500);
+    }
+
+    MonitorStatus.prototype.preRenderStep(function() {
+      this.serverHash = this.monitorHash || false;
+
+      if(this.dataSourceError !== false) {
+        this.alertType = "danger";
+      }
+      else if(this.clientHash == false) {
+        this.clientHash = this.serverHash || false;
+        this.alertType = "info";
+      }
+      else if(this.clientHash && this.clientHash != this.serverHash) {
+        this.alertType = "warning"
+        this.reportRestartThenRestart();
+      }
+      else {
+        this.alertType = "success";
+      }
+    });
+  });
+  </script>
+</body>
+</html>

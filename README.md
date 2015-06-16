@@ -13,12 +13,20 @@ Recent Releases
 Online Demos
 ------------
 * `index.html` : [Index - Unstyled Tests](https://cdn.rawgit.com/Markavian/web-component/1.0.1b/tests/)
-* `data-loading.html` : [Data Loading - Using Static Data](https://cdn.rawgit.com/Markavian/web-component/1.0.1b/tests/data-loading.html) - 
-* `data/credits.json` : [Static Data for Data Loading](https://cdn.rawgit.com/Markavian/web-component/1.0.1b/tests/data/credits.json) 
+* `data-loading.html` : [Data Loading - Using Static Data](https://cdn.rawgit.com/Markavian/web-component/1.0.1b/tests/data-loading.html) -
+* `data/credits.json` : [Static Data for Data Loading](https://cdn.rawgit.com/Markavian/web-component/1.0.1b/tests/data/credits.json)
 
 Projects using Web Component
 ----------------------------
 * [Product Monitor](https://github.com/johnbeech/product-monitor/) - for rendering pretty much everything client side.
+
+Local development setup
+-------------------
+```
+npm install http-server -g
+http-server
+```
+Then open http://localhost:8080 in a web-browser of your choice.
 
 Change Log
 ----------
@@ -36,4 +44,4 @@ Change Log
 * Added basic examples and data-loading example.
 * Created static HTML template for testing out web-component.js
 * Extracted component.js from [product-monitor](https://github.com/johnbeech/product-monitor) project to make web-component.js.
-* Initial commit 
+* Initial commit
