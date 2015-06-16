@@ -1,6 +1,6 @@
 Web Component
 =============
-A javascript library for adding data driven web components, via templates to a HTML page.
+A javascript library for very simply adding data driven web components, via templates to a HTML page.
 
 Recent Releases
 ---------------
@@ -12,6 +12,21 @@ Recent Releases
 
 **Version 1.0** (Newborn)
 * https://cdn.rawgit.com/Markavian/web-component/1.0/lib/web-component.js
+
+Dependencies
+------------
+- [jQuery](https://jquery.com/) - for remote calls to server to provide components with data
+- [Handlebars](http://handlebarsjs.com/) - for "minimal templating on steroids"
+
+What it can do
+--------------
+Web Component javascript library can turns custom HTML tags:
+
+![Web Component Data Loading Example Source](images/data-loading-example-source.png)
+
+Into rendered content, using client side JavaScript and template definitions:
+
+![Web Component Data Loading Example](images/data-loading-example.png)
 
 Online Demos
 ------------
