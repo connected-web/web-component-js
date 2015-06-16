@@ -16,6 +16,46 @@ Online Demos
 * `data-loading.html` : [Data Loading - Using Static Data](https://cdn.rawgit.com/Markavian/web-component/1.0.1c/tests/data-loading.html)
 * `data/credits.json` : [Static Data for Data Loading](https://cdn.rawgit.com/Markavian/web-component/1.0.1c/tests/data/credits.json)
 
+How to use
+----------
+1. Copy script tags for jQuery, Handlebars, and Web Component into the `<head></head>` of your HTML page
+2. Define a `<template for="your-custom-element"></template>` tag
+3. Insert your custom tags into the page
+4. Load the page in a web browser to see your custom tags render
+
+A complete example to get you started: 
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Web Component Examples - Index</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.3/handlebars.js"></script>
+  <script src="https://cdn.rawgit.com/Markavian/web-component/1.0/lib/web-component.js"></script>
+
+  <style for="page">
+    body { padding: 20px; font-family: sans-serif; }
+  </style>
+
+</head>
+<body>
+  <github-repo user="Markavian" repo="web-component">
+  <github-repo user="johnbeech" repo="product-monitor">
+
+  <template for="github-repo">
+    <h2>Repository</h2>
+    <li>
+      <a href="https://github.com/{{user}}/{{repo}}/">
+        <b>{{user}}</b>/<b>{{repo}}</b>
+      </a>
+    </li>
+  </template>
+<body>
+</html>
+```
+
+Beyond this simple example, Web Component can be used for auto-loading data via jQuery AJAX calls, and re-rendering other components defined by your page template based on these events.
+
 Projects using Web Component
 ----------------------------
 * [Product Monitor](https://github.com/johnbeech/product-monitor/) - for rendering pretty much everything client side.
@@ -28,15 +68,19 @@ http-server
 ```
 Then open http://localhost:8080 in a web-browser of your choice.
 
-Change Log
-----------
+Edits can be made to `lib/web-component.js` directly, and you can use the HTML files in `tests/` as harnesses for various situations. Preferred browser for debugging is Chrome. 
 
-### Unreleased Changes
+Changelog
+---------
+
+### 1.1.0
+* Deprecated `<template tagName="element-name">` in favour of `<template for="element-name">`
 * Changed default dataSourceType value to `false` from `jsonp`
-* Added monitor-debug test to investigate nested component memory-leak
+* Fixed nested component memory-leak (Issue #1)
+* Added log levels OFF, WARN, INFO, and RENDER
 * Styled up example pages in Online Demos section
-* Created change log
 * Added styles to credits
+* Created change log
 
 ### 1.0.1
 * Added fail message to data loading based on jQuery spec.
