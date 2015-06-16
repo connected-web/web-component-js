@@ -92,7 +92,8 @@ Edits can be made to `lib/web-component.js` directly, and you can use the HTML f
 Changelog
 ---------
 
-### 1.1.0
+### 1.1.1
+* Fix for broken `<template for="element-name">` component registration.
 * Deprecated `<template tagName="element-name">` in favour of `<template for="element-name">`
 * Changed default dataSourceType value to `false` from `jsonp`
 * Fixed nested component memory-leak (Issue #1)
@@ -100,6 +101,9 @@ Changelog
 * Styled up example pages in Online Demos section
 * Added styles to credits
 * Created change log
+ 
+### 1.1.0 (Yanked)
+* Did not scan correctly for templates in the form `<template for="element-name">`
 
 ### 1.0.1
 * Added fail message to data loading based on jQuery spec.
