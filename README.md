@@ -32,6 +32,7 @@ Change Log
 ----------
 
 ### Unreleased Changes
+* Changed default dataSourceType value to `false` from `jsonp`
 * Added monitor-debug test to investigate nested component memory-leak
 * Created change log
 * Added styles to credits
