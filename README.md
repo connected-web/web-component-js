@@ -1,16 +1,23 @@
 Web Component
 =============
-A javascript library for very simply adding data driven web components, via templates to a HTML page.
+A javascript library for very simply adding data driven web components to a HTML page, by defining your own domain specific, HTML language via templates.
 
 Recent Releases
 ---------------
-**Version 1.1.1** (In field testing)
+**Version 1.1.2** (In field testing)
+22nd June 2015
+* https://cdn.rawgit.com/Markavian/web-component/1.1.2/lib/web-component.js
+
+**Version 1.1.1** (Stable)
+16th June 2015
 * https://cdn.rawgit.com/Markavian/web-component/1.1.1/lib/web-component.js
 
 **Version 1.0.1** (Memory Leak, please upgrade)
+12th June 2015
 * https://cdn.rawgit.com/Markavian/web-component/1.0.1/lib/web-component.js
 
 **Version 1.0** (Newborn)
+11th June 2015
 * https://cdn.rawgit.com/Markavian/web-component/1.0/lib/web-component.js
 
 Dependencies
@@ -91,6 +98,11 @@ Edits can be made to `lib/web-component.js` directly, and you can use the HTML f
 
 Changelog
 ---------
+
+### 1.1.2
+* Moved jQuery data loading into an adapter
+* Created `ComponentDataSources` class to hold data adapters
+* Added `ComponentDataSources.register` method to allow new data adapters to be registered
 
 ### 1.1.1
 * Fix for broken `<template for="element-name">` component registration.
