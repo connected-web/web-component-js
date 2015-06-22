@@ -65,8 +65,8 @@ A complete example to get you started:
 
 </head>
 <body>
-  <github-repo user="Markavian" repo="web-component">
-  <github-repo user="johnbeech" repo="product-monitor">
+  <github-repo user="Markavian" repo="web-component"></github-repo>
+  <github-repo user="johnbeech" repo="product-monitor"></github-repo>
 
   <template for="github-repo">
     <h2>Repository</h2>
