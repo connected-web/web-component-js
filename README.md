@@ -170,6 +170,7 @@ In the following example the `ComponentClass.apply(fn)` method is used to trigge
 
   });
 </script>
+```
 
 ### init
 The `init` event is fired when a new component of `ComponentClass` is created. If you are using templates and inline elements to define your components, then this will trigger on page load before you have chance to hook into the event.
