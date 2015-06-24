@@ -142,38 +142,30 @@
   <p>Added a deprecation warning to encourage template writers to switch over from using the tagName attribute in &lt;template tagName="my-element"&gt; to &lt;template for="my-element"&gt;</p>
   <pre>[Web Component] [warn] The attribute tagName, e.g. &lt;template tagName="monitor-status"&gt; will be deprecated in favour of &lt;template for="monitor-status"&gt; in web-component.js release 2.0.0. Please update your templates.</pre>
 
-  <h2>Instance Event</h2>
-  <p>The following buttons have been wired up with a custom Alert when you click on them.</p>
+  <h2>Clickable Component</h2>
 
-  <custom-button-component>Hello John</custom-button-component>
-  <custom-button-component>Hello Anna</custom-button-component>
-  <custom-button-component>Hello Elmira</custom-button-component>
+  <custom-clickable-component>Hello John</custom-clickable-component>
+  <custom-clickable-component>Hello James</custom-clickable-component>
+  <custom-clickable-component>Hello Hatty</custom-clickable-component>
 
-  <template for="custom-button-component" refresh-time="5">
-    <button type="button" class="btn btn-{{alertType}}">
-      <span>{{content}}</span>
-    </button>
+  <template for="custom-clickable-component">
+    <span class="btn btn-default">{{content}}</span>
   </template>
 
   <script type="text/javascript">
     $(function() {
-      var ButtonComponent = Component.configure("custom-button-component");
+      var ClickableComponent = Component.configure("custom-clickable-component");
 
-      // Associate a static method for handling click events
-      ButtonComponent.handleClick = function(instance) {
-        alert("The button says: " + instance.content);
-      }
-
-      // Register the init method with something interesting
-      ButtonComponent.on('init', function(instance) {
+      // Map data.statusCode to alertType immediately before rendering
+      ClickableComponent.on('renderComplete', function(instance) {
         instance.element.onclick = function() {
-          ButtonComponent.handleClick(instance);
-        };
+          alert("You clicked me: " + instance.content);
+        }
       });
 
-      // Trigger the init event on all existing ButtonComponent instances
-      ButtonComponent.apply(function(instance) {
-        instance.dispatchEvent("init");
+      // Force all components to re-render
+      ClickableComponent.apply(function(instance) {
+        instance.render();
       });
 
     });

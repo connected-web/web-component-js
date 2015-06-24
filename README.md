@@ -254,23 +254,31 @@ The `preRenderStep` event is fired just before calling the body of the render fu
 The `renderComplete` event is fired at the end of the render function. This event hook is useful for attaching additional JavaScript to the template post-instance creation. If you need to force a rerender immediately after page load, then you can use the `ComponentClass.apply(fn)` method to achieve this.
 
 ```html
+<custom-clickable-component>Hello John</custom-clickable-component>
+<custom-clickable-component>Hello James</custom-clickable-component>
+<custom-clickable-component>Hello Hatty</custom-clickable-component>
+
+<template for="custom-clickable-component">
+  <span class="btn btn-default">{{content}}</span>
+</template>
+
 <script type="text/javascript">
-$(function() {
-  var ClickableComponent = Component.configure("custom-clickable-component");
+  $(function() {
+    var ClickableComponent = Component.configure("custom-clickable-component");
 
-  // Map data.statusCode to alertType immediately before rendering
-  ClickableComponent.on('renderComplete', function(instance) {
-    instance.element.onclick = function() {
-      alert("You clicked me: " + instance.content);
-    }
+    // Map data.statusCode to alertType immediately before rendering
+    ClickableComponent.on('renderComplete', function(instance) {
+      instance.element.onclick = function() {
+        alert("You clicked me: " + instance.content);
+      }
+    });
+
+    // Force all components to re-render
+    ClickableComponent.apply(function(instance) {
+      instance.render();
+    });
+
   });
-
-  // Force all components to re-render
-  ClickableComponent.apply(function(instance) {
-    instance.render();
-  });
-
-});
 </script>
 ```
 
