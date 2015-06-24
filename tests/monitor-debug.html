@@ -62,19 +62,19 @@
         }, 1500);
       }
 
-      MonitorStatus.on("preRenderStep", function() {
-        this.serverHash = this.monitorHash || false;
+      MonitorStatus.on("preRenderStep", function(instance) {
+        instance.serverHash = instance.monitorHash || false;
 
-        if (this.dataSourceError !== false) {
-          this.alertType = "danger";
+        if (instance.dataSourceError !== false) {
+          instance.alertType = "danger";
         } else if (this.clientHash == false) {
-          this.clientHash = this.serverHash || false;
-          this.alertType = "info";
-        } else if (this.clientHash && this.clientHash != this.serverHash) {
-          this.alertType = "warning"
-          this.reportRestartThenRestart();
+          instance.clientHash = instance.serverHash || false;
+          instance.alertType = "info";
+        } else if (instance.clientHash && instance.clientHash != instance.serverHash) {
+          instance.alertType = "warning"
+          instance.reportRestartThenRestart();
         } else {
-          this.alertType = "success";
+          instance.alertType = "success";
         }
       });
     });
@@ -126,19 +126,95 @@
 
   <p>View source for some script examples showing how to set log levels.</p>
 
+  <!--
   <script type="text/javascript">
     $(function() {
-      Component.logLevel(Component.LogLevel.RENDER);
-      Component.logLevel(Component.LogLevel.INFO);
-      Component.logLevel(Component.LogLevel.WARN);
-      Component.logLevel(Component.LogLevel.OFF);
       Component.logLevel(0); // equivalent to off
+      Component.logLevel(Component.LogLevel.OFF);
+      Component.logLevel(Component.LogLevel.RENDER);
+      Component.logLevel(Component.LogLevel.WARN);
+      Component.logLevel(Component.LogLevel.INFO);
+    });
+  </script>
+  -->
+
+  <h2>Deprecation Warnings</h2>
+  <p>Added a deprecation warning to encourage template writers to switch over from using the tagName attribute in &lt;template tagName="my-element"&gt; to &lt;template for="my-element"&gt;</p>
+  <pre>[Web Component] [warn] The attribute tagName, e.g. &lt;template tagName="monitor-status"&gt; will be deprecated in favour of &lt;template for="monitor-status"&gt; in web-component.js release 2.0.0. Please update your templates.</pre>
+
+  <h2>Instance Event</h2>
+  <p>The following buttons have been wired up with a custom Alert when you click on them.</p>
+
+  <custom-button-component>Hello John</custom-button-component>
+  <custom-button-component>Hello Anna</custom-button-component>
+  <custom-button-component>Hello Elmira</custom-button-component>
+
+  <template for="custom-button-component" refresh-time="5">
+    <button type="button" class="btn btn-{{alertType}}">
+      <span>{{content}}</span>
+    </button>
+  </template>
+
+  <script type="text/javascript">
+    $(function() {
+      var ButtonComponent = Component.configure("custom-button-component");
+
+      // Associate a static method for handling click events
+      ButtonComponent.handleClick = function(instance) {
+        alert("The button says: " + instance.content);
+      }
+
+      // Register the init method with something interesting
+      ButtonComponent.on('init', function(instance) {
+        instance.element.onclick = function() {
+          ButtonComponent.handleClick(instance);
+        };
+      });
+
+      // Trigger the init event on all existing ButtonComponent instances
+      ButtonComponent.apply(function(instance) {
+        instance.dispatchEvent("init");
+      });
+
     });
   </script>
 
-  <h2>Deprecation Warning</h2>
-  <p>Added a deprecation warning to encourage template writers to switch over from using the tagName attribute in &lt;template tagName="my-element"&gt; to &lt;template for="my-element"&gt;</p>
-  <pre>[Web Component] [warn] The attribute tagName, e.g. &lt;template tagName="monitor-status"&gt; will be deprecated in favour of &lt;template for="monitor-status"&gt; in web-component.js release 2.0.0. Please update your templates.</pre>
+  <h2>Pre Render Step</h2>
+
+  <custom-status-component status-code="200">Am I ok?</custom-status-component>
+  <custom-status-component status-code="400">Not ok?</custom-status-component>
+  <custom-status-component status-code="300">Informative?</custom-status-component>
+  <custom-status-component status-code="500">Warning?</custom-status-component>
+
+  <template for="custom-status-component">
+    <span class="btn btn-{{alertType}}">{{content}}</span>
+  </template>
+
+  <script type="text/javascript">
+    $(function() {
+      var StatusComponent = Component.configure("custom-status-component");
+
+      // Map data.statusCode to alertType immediately before rendering
+      StatusComponent.on('preRenderStep', function(instance) {
+        var severity = Math.round(instance["status-code"] / 100) * 100;
+        instance.alertType = ({
+          "0": 'info',
+          "100": 'primary',
+          "200": 'success',
+          "300": 'info',
+          "400": 'danger',
+          "500": 'warning'
+        })[severity] || 'danger';
+      });
+
+      // Force a re-render now
+      StatusComponent.apply(function(instance) {
+        instance.render();
+      });
+
+    });
+  </script>
+
 </body>
 
 </html>
