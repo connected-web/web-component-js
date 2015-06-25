@@ -4,7 +4,11 @@ A javascript library for very simply adding data driven web components to a HTML
 
 Recent Releases
 ---------------
-**Version 1.1.2** (In field testing)
+**Version 1.1.3** (In field testing)
+25th June 2015
+* https://cdn.rawgit.com/Markavian/web-component/1.1.3/lib/web-component.js
+
+**Version 1.1.2** (Seems ok)
 22nd June 2015
 * https://cdn.rawgit.com/Markavian/web-component/1.1.2/lib/web-component.js
 
@@ -37,10 +41,12 @@ Web Component is a javascript library that can turn custom HTML tags, for exampl
 
 Online Demos
 ------------
-* `index.html` : [Index - Basic Examples](https://cdn.rawgit.com/Markavian/web-component/1.1.0/tests/index.html)
-* `data-loading.html` : [Data Loading - Using Static Data](https://cdn.rawgit.com/Markavian/web-component/1.1.0/tests/data-loading.html)
-* `data/credits.json` : [Static Data for Data Loading](https://cdn.rawgit.com/Markavian/web-component/1.1.0/tests/data/credits.json)
-* `tests/monitor-debug.html` : [Test Harness for Rendering](https://cdn.rawgit.com/Markavian/web-component/1.1.0/tests/monitor-debug.html)
+* `index.html` : [Index - Basic Examples](https://cdn.rawgit.com/Markavian/web-component/1.1.3/tests/index.html)
+* `data-loading.html` : [Data Loading - Using Static Data](https://cdn.rawgit.com/Markavian/web-component/1.1.3/tests/data-loading.html)
+* `tests/monitor-debug.html` : [Test Harness for Rendering](https://cdn.rawgit.com/Markavian/web-component/1.1.3/tests/monitor-debug.html)
+
+### Sample data
+* `data/credits.json` : [Static Data for Data Loading](https://cdn.rawgit.com/Markavian/web-component/1.1.3/tests/data/credits.json)
 
 How to use
 ----------
