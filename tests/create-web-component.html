@@ -9,8 +9,11 @@
 
   <!-- All the boostrap theming -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+  <!-- Code highlighting support -->
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/styles/github.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/highlight.min.js"></script>
 
   <style for="page">
     body {
@@ -28,7 +31,7 @@
 
   <!-- Define the web component that drives this page -->
   <template for="create-a-web-component" template-id="default">
-    <div class="panel panel-default" style="height: 100%;">
+    <div class="panel panel-default">
       <div class="panel-heading">Live Preview</div>
       <div class="panel-body">
         <div class="row">
@@ -56,22 +59,48 @@
   <template for="live-preview-form">
     <form>
       <div class="form-group">
-        <textarea type="text" class="form-control" id="live-preview-form" placeholder="Type here: <my-component></my-component>" rows="4"></textarea>
+        <textarea type="text" class="form-control" id="live-preview-form" placeholder="Type here: <my-component></my-component>" rows="12"></textarea>
       </div>
     </form>
   </template>
+
+  <style for="live-preview-form">
+    live-preview-form > form > div > textarea {
+      font-family: monospace;
+    }
+  </style>
 
   <script type="text/javascript">
   $(function() {
     var LivePreviewForm = Component.configure("live-preview-form");
 
+    function catchTab(e) {
+      if (e.keyCode == 9) {
+      	var myValue = "\t";
+      	var startPos = this.selectionStart;
+      	var endPos = this.selectionEnd;
+      	var scrollTop = this.scrollTop;
+      	this.value = this.value.substring(0, startPos) + myValue + this.value.substring(endPos,this.value.length);
+      	this.focus();
+      	this.selectionStart = startPos + myValue.length;
+      	this.selectionEnd = startPos + myValue.length;
+      	this.scrollTop = scrollTop;
+
+      	e.preventDefault();
+      }
+    }
+
     LivePreviewForm.on("renderComplete", function(instance) {
       var dataTargetId = instance["data-target-id"];
       var dataTarget = $('#' + dataTargetId);
 
-      $('textarea').bind('input propertychange', function() {
+      $('textarea', instance.element).bind('input propertychange', function() {
         dataTarget.html($(this).val())
+
+        var scope = dataTarget[0];
+        Component.registerTemplates(scope).scanForComponents(scope);
       });
+      $(instance.element).on('keydown', 'textarea', catchTab);
     });
 
     LivePreviewForm.apply(function(instance) {
