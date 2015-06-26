@@ -36,25 +36,97 @@
       <div class="panel-body">
         <div class="row">
           <div class="col-md-6">
-            <live-preview-form data-target-id="live-preview-form-{{template-id}}"></live-preview-form>
+            <live-preview-form></live-preview-form>
           </div>
           <div class="col-md-6">
-            <live-preview-output template-id="live-preview-form-{{template-id}}"></live-preview-output>
+            <live-preview-output>Content preview will appear here.</live-preview-output>
           </div>
         </div>
       </div>
     </div>
-      <div class="row">
-        <div class="col-md-6">
-          <template-form></template-form>
-          <javascript-form></javascript-form>
-          <stylesheet-form></styesheet>
-        </div>
-        <div class="col-md-6">
-          <web-component-output></web-component-output>
+    <div class="panel panel-default">
+      <div class="panel-heading">Fragments</div>
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-md-6">
+            <label for="template-fragment-{{template-id}}">Template</label>
+            <template-block id="template-fragment-{{template-id}}"></template-block>
+
+            <label for="javascript-fragment-{{template-id}}">JavaScript</label>
+            <javascript-block id="javascript-fragment-{{template-id}}"></javascript-block>
+
+            <label for="stylesheet-fragment-{{template-id}}">Stylesheet</label>
+            <stylesheet-block id="stylesheet-fragment-{{template-id}}"></stylesheet-block>
+          </div>
+          <div class="col-md-6">
+            <label for="web-component-output-{{template-id}}">Web Component</label>
+            <web-component-output id="web-component-output-{{template-id}}"></web-component-output>
+          </div>
         </div>
       </div>
+    </div>
   </template>
+
+  <script type="text/javascript" for="create-a-web-component">
+  $(function() {
+    var CreateAWebComponent = Component.configure("create-a-web-component");
+
+    CreateAWebComponent.on("renderComplete", function(instance) {
+      CreateAWebComponent.bindInputEvents(instance);
+      CreateAWebComponent.on('livePreviewUpdated', CreateAWebComponent.displayFragments);
+    });
+
+    CreateAWebComponent.bindInputEvents = function(instance) {
+      $('textarea', instance.element).bind('input propertychange', function() {
+        CreateAWebComponent.updateLivePreview(instance);
+      });
+      $(instance.element).on('keydown', 'textarea', CreateAWebComponent.catchTab);
+    };
+
+    CreateAWebComponent.updateLivePreview = function(instance) {
+      var source = $('textarea', instance.element).val();
+      var preview = $('live-preview-output', instance.element);
+
+      try {
+        preview.html(source);
+        preview.each(function() {
+          var scope = this;
+          Component.registerTemplates(scope).scanForComponents(scope);
+        });
+        instance.dispatchEvent('livePreviewUpdated');
+      }
+      catch(e) {
+        preview.html(e.toString());
+      }
+    };
+
+    CreateAWebComponent.catchTab = function(e) {
+      if (e.keyCode == 9) {
+      	var myValue = "\t";
+      	var startPos = this.selectionStart;
+      	var endPos = this.selectionEnd;
+      	var scrollTop = this.scrollTop;
+      	this.value = this.value.substring(0, startPos) + myValue + this.value.substring(endPos,this.value.length);
+      	this.focus();
+      	this.selectionStart = startPos + myValue.length;
+      	this.selectionEnd = startPos + myValue.length;
+      	this.scrollTop = scrollTop;
+
+      	e.preventDefault();
+      }
+    };
+
+    CreateAWebComponent.displayFragments = function(instance) {
+      var template = $('template-block');
+      var stylesheet = $('stylesheet-block');
+      var javascript = $('javascript-block');
+    };
+
+    CreateAWebComponent.apply(function(instance) {
+      instance.render();
+    });
+  });
+  </script>
 
   <template for="live-preview-form">
     <form>
@@ -70,51 +142,31 @@
     }
   </style>
 
-  <script type="text/javascript">
-  $(function() {
-    var LivePreviewForm = Component.configure("live-preview-form");
+  <h1>Hello World!</h1>
+  <p>What's new today?</p>
 
-    function catchTab(e) {
-      if (e.keyCode == 9) {
-      	var myValue = "\t";
-      	var startPos = this.selectionStart;
-      	var endPos = this.selectionEnd;
-      	var scrollTop = this.scrollTop;
-      	this.value = this.value.substring(0, startPos) + myValue + this.value.substring(endPos,this.value.length);
-      	this.focus();
-      	this.selectionStart = startPos + myValue.length;
-      	this.selectionEnd = startPos + myValue.length;
-      	this.scrollTop = scrollTop;
+  <xyz data-name="John">Some content goes here.</xyz>
+  <xyz data-name="Anna">Some other content goes here.</xyz>
+  <xyz data-name="George">Your content goes here.</xyz>
 
-      	e.preventDefault();
-      }
-    }
-
-    LivePreviewForm.on("renderComplete", function(instance) {
-      var dataTargetId = instance["data-target-id"];
-      var dataTarget = $('#' + dataTargetId);
-
-      $('textarea', instance.element).bind('input propertychange', function() {
-        dataTarget.html($(this).val())
-
-        var scope = dataTarget[0];
-        Component.registerTemplates(scope).scanForComponents(scope);
-      });
-      $(instance.element).on('keydown', 'textarea', catchTab);
-    });
-
-    LivePreviewForm.apply(function(instance) {
-      instance.render();
-    });
-  });
-  </script>
-
-  <template for="live-preview-output">
-    <div id="{{template-id}}">
-      <p>Content preview goes here.</p>
-    </div>
+  <template for="xyz">
+    <p><b>{{data-name}}</b>, <i>{{content}} {{special}}</i>
   </template>
 
+  <script type="text/javascript">
+  $(function() {
+  	var XyzComponent = Component.configure('xyz');
 
+  	XyzComponent.on('preRenderStep', function(instance) {
+      if(instance["data-name"] == "George") {
+    		instance.special = "George gets special content.";
+      }
+  	});
+
+  	XyzComponent.apply(function(instance) {
+  		instance.render();
+  	});
+  });
+  </script>
 </body>
 </html>
