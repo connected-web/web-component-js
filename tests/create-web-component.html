@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Web Component Examples - Monitor Status Debug</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.3/handlebars.js"></script>
+  <script src="../lib/web-component.js"></script>
+
+  <!-- All the boostrap theming -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+  <style for="page">
+    body {
+      padding: 20px;
+      font-family: sans-serif;
+    }
+  </style>
+
+</head>
+
+<body>
+  <h1>Create a Web Component</h1>
+  <p>This form helps you create a standalone Java Script include you use to develop your own web components. Your web component is then in a form that can then be included from anywhere on the web.</p>
+  <create-a-web-component></create-a-web-component>
+
+  <!-- Define the web component that drives this page -->
+  <template for="create-a-web-component" template-id="default">
+    <div class="panel panel-default" style="height: 100%;">
+      <div class="panel-heading">Live Preview</div>
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-md-6">
+            <live-preview-form data-target-id="live-preview-form-{{template-id}}"></live-preview-form>
+          </div>
+          <div class="col-md-6">
+            <live-preview-output template-id="live-preview-form-{{template-id}}"></live-preview-output>
+          </div>
+        </div>
+      </div>
+    </div>
+      <div class="row">
+        <div class="col-md-6">
+          <template-form></template-form>
+          <javascript-form></javascript-form>
+          <stylesheet-form></styesheet>
+        </div>
+        <div class="col-md-6">
+          <web-component-output></web-component-output>
+        </div>
+      </div>
+  </template>
+
+  <template for="live-preview-form">
+    <form>
+      <div class="form-group">
+        <textarea type="text" class="form-control" id="live-preview-form" placeholder="Type here: <my-component></my-component>" rows="4"></textarea>
+      </div>
+    </form>
+  </template>
+
+  <script type="text/javascript">
+  $(function() {
+    var LivePreviewForm = Component.configure("live-preview-form");
+
+    LivePreviewForm.on("renderComplete", function(instance) {
+      var dataTargetId = instance["data-target-id"];
+      var dataTarget = $('#' + dataTargetId);
+
+      $('textarea').bind('input propertychange', function() {
+        dataTarget.html($(this).val())
+      });
+    });
+
+    LivePreviewForm.apply(function(instance) {
+      instance.render();
+    });
+  });
+  </script>
+
+  <template for="live-preview-output">
+    <div id="{{template-id}}">
+      <p>Content preview goes here.</p>
+    </div>
+  </template>
+
+
+</body>
+</html>
