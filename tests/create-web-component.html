@@ -89,10 +89,15 @@
 
       try {
         preview.html(source);
+
+        var scripts = $('script', preview);
+        scripts.remove();
+
         preview.each(function() {
           var scope = this;
           Component.registerTemplates(scope).scanForComponents(scope);
         });
+        preview.append(scripts);
         instance.dispatchEvent('livePreviewUpdated');
       }
       catch(e) {
