@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Web Component Examples - Geo Location Data</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.3/handlebars.js"></script>
+  <script src="../lib/web-component.js"></script>
+
+  <!-- All the boostrap theming -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+  <style for="page">
+    body {
+      padding: 20px;
+      font-family: sans-serif;
+    }
+  </style>
+
+</head>
+
+<body>
+  <h1>Geo Location Data Example</h1>
+  <p>Playing around with some local data.</p>
+
+  <geo-names data-source-url="data/geoNames.json"></geo-names>
+
+  <template for="icon">
+    <span class="glyphicon glyphicon-{{content}}"></span>
+  </template>
+
+  <template for="geo-names">
+  <pre>Data being used is: <url>{{dataSourceUrl}}</url></pre>
+  {{#each geonames}}
+    <div>
+      <h3>{{name}}</h3>
+      <p><b>{{countrycode}}</b> : {{geonameId}}</p>
+      <p>Wikipedia: <url>{{wikipedia}}</url></p>
+      <p><geo-coord lat="{{lat}}" lng="{{lng}}"></geo-coord></p>
+      <p><population>{{population}}</population>
+    </div>
+  {{/each}}
+  </template>
+
+  <template for="geo-coord">
+    <badge>
+      <icon>map-marker</icon><geo-lng title="Longitude">{{lng}}</geo-lng>, <geo-lat title="Latitude">{{lat}}</geo-lat>
+    </badge>
+  </template>
+
+  <style>
+  geo-names > div {
+    background: #EEE;
+    border-radius: 10px;
+    padding: 10px;
+    display: inline-block;
+    width: 300px;
+    margin: 5px;
+    vertical-align: top;
+  }
+  geo-names > div > h3 {
+    margin-top: 0;
+  }
+  </style>
+
+  <template for="population"><badge title="Population">
+    <icon>user</icon>
+    {{content}}
+    </badge>
+  </template>
+
+  <template for="badge">
+    <span class="badge">{{content}}</span>
+  </template>
+
+  <template for="url"><a href="{{content}}">{{content}}</a></template>
+
+</body>
+
+</html>
