@@ -120,7 +120,9 @@ Please see the wiki for documentation and examples on using the Web Component li
 Changelog
 ---------
 
-### Unreleased
+### 1.2.0
+* Added Web Component Composer
+* Added file encoding and decoding to `web-component.js`
 * Added events to ComponentClass model
 * Rewired `dataSourceMessage` to be set based on events
 * Documented event types with examples
