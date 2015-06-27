@@ -45,7 +45,7 @@
       </div>
     </div>
     <div class="panel panel-default">
-      <div class="panel-heading">Fragments</div>
+      <div class="panel-heading">Compiler</div>
       <div class="panel-body">
         <div class="row">
           <div class="col-md-6">
@@ -74,6 +74,7 @@
       CreateAWebComponent.on("renderComplete", function(instance) {
         CreateAWebComponent.bindInputEvents(instance);
         CreateAWebComponent.on('livePreviewUpdated', CreateAWebComponent.displayFragments);
+        CreateAWebComponent.on('livePreviewUpdated', CreateAWebComponent.compileAsJavaScript);
       });
 
       CreateAWebComponent.bindInputEvents = function(instance) {
@@ -173,10 +174,73 @@
         });
 
         styles.each(function(key, value) {
-          displayString = CreateAWebComponent.getHTML(value, true);
+          var displayString = CreateAWebComponent.getHTML(value, true);
           displayString = hljs.highlight("html", displayString, true).value;
           stylesheetBlock.html(displayString);
         });
+      };
+
+      CreateAWebComponent.encodeHtmlForJavaScript = function(html) {
+        return encodeURIComponent(html);
+      }
+
+      CreateAWebComponent.encodeHtmlAsJavaScriptString = function(html) {
+        var NL = "\n";
+        var lines = html.split(NL);
+        var result = "";
+        for (var i = 0; i < lines.length; i++) {
+          var line = lines[i];
+          result += '"' + CreateAWebComponent.encodeHtmlForJavaScript(line) + '"';
+          if (i < lines.length - 1) {
+            result += " + " + NL;
+          }
+        }
+        result = result.replace(/%20%20/g, '');
+        return result;
+      }
+
+      CreateAWebComponent.compileAsJavaScript = function(instance) {
+        var outputBlock = $('web-component-output');
+
+        var source = $('textarea', instance.element).val();
+        var parsed = document.createElement('div');
+        parsed.innerHTML = source;
+
+        var templates = $('template', parsed);
+        var styles = $('style', parsed);
+        var scripts = $('script', parsed);
+
+        var result = '';
+        var NL = "\n";
+
+        result += "// Templates " + NL;
+        var templateData = [];
+        templates.each(function(key, value) {
+          var fragmentString = CreateAWebComponent.getHTML(value, true);
+          var fragment = CreateAWebComponent.encodeHtmlAsJavaScriptString(fragmentString) + NL;
+          templateData.push(fragment);
+        });
+        result += "var encodedTemplateTags = [" + templateData.join(", ") + "];" + NL;
+
+        result += "// Scripts " + NL;
+        var scriptData = [];
+        scripts.each(function(key, value) {
+          var fragmentString = CreateAWebComponent.getHTML(value, true);
+          var fragment = CreateAWebComponent.encodeHtmlAsJavaScriptString(fragmentString) + NL;
+          scriptData.push(fragment);
+        });
+        result += "var encodedScriptTags = [" + scriptData.join(", ") + "];" + NL;
+
+        result += "// Styles " + NL;
+        var styleData = [];
+        styles.each(function(key, value) {
+          var fragmentString = CreateAWebComponent.getHTML(value, true);
+          var fragment = CreateAWebComponent.encodeHtmlAsJavaScriptString(fragmentString) + NL;
+          styleData.push(fragment);
+        });
+        result += "var encodedStyleTags = [" + styleData.join(", ") + "];" + NL;
+
+        outputBlock.html("<pre>" + result + "</pre>");
       };
 
       CreateAWebComponent.replaceHtmlEntities = function(content) {
