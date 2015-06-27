@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>Web Component Examples - File Tester</title>
 
@@ -8,19 +9,32 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.3/handlebars.js"></script>
   <script src="../lib/web-component.js"></script>
 
+  <!-- Additional libraries -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.2/marked.min.js"></script>
+
+  <!-- Code highlighting support -->
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/styles/darkula.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/highlight.min.js"></script>
+
   <!-- External Web Components under test -->
   <script src="components/xyz.component.js"></script>
+  <script src="components/markdown.component.js"></script>
+  <script src="components/code.component.js"></script>
 
   <style for="page">
-    body { padding: 20px; font-family: sans-serif; }
+    body {
+      padding: 20px;
+      font-family: sans-serif;
+    }
   </style>
 
 </head>
+
 <body>
   <h1>Web Component File Tester</h1>
   <p>This page uses externally loaded Web Components encoded using the <i>Web Component Composer</i>.</p>
 
-  <h2>Demo</h2>
+  <h2>XYZ Demo</h2>
   <p>Lets see how this goes...</p>
   <p>
     <xyz data-name="John">William</xyz>
@@ -29,5 +43,56 @@
     <xyz data-name="Elizabeth">Henry</xyz>
   </p>
 
+  <h2>Markdown Demo</h2>
+  <p>Using some markdown code...</p>
+  <markdown>
+A heading
+---------
+
+A list:
+* List 1
+* List 2
+* List 3
+
+Some code:
+```js
+function sum(x, y) {
+  return x + y;
+}
+```
+  </markdown>
+
+  <h2>Code Demos</h2>
+  <p>We kind of did this already with the Markdown Demo, but here are some more samples for sanity:</p>
+  <pre><code lang="html" class="hljs">
+<h1>Heading</h1>
+<p>Paragraph</p>
+<a href="url">text</a>
+<ul>
+  <li>List 1</li>
+  <li>List 2</li>
+  <li>List 3</li>
+</ul>
+  </code></pre>
+
+  <pre><code lang="js" class="hljs">
+$(function() {
+  var message = document.createElement('h1');
+  message.innerHTML = "JavaScript is the only language that matters.";
+  document.body.appendChild(message);
+});
+  </code></pre>
+
+  <pre><code lang="csharp" class="hljs">
+public class TraditionalObject {
+  public TraditionalObject(y) {
+    // Unless your develop in another language
+    var x = y;
+    this.z = x;
+  }
+}
+  </code></pre>
+
 </body>
+
 </html>
