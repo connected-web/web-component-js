@@ -6,21 +6,29 @@
 <xyz data-name="George">Your content goes here.</xyz>
 
 <template for="xyz">
-  <p><b>{{data-name}}</b>, <i>{{content}} {{special}}</i>
+  <p><b>{{data-name}}</b>, <i>{{content}} {{special}}</i></p>
 </template>
 
-<script type="text/javascript">
-$(function() {
-	var XyzComponent = Component.configure('xyz');
-
-	XyzComponent.on('preRenderStep', function(instance) {
-    if(instance["data-name"] == "George") {
-  		instance.special = "George gets special content.";
-    }
-	});
-
-	XyzComponent.apply(function(instance) {
-		instance.render();
-	});
-});
+<script for="xyz" type="text/javascript">
+  $(function() {
+    var XyzComponent = Component.configure('xyz');
+    XyzComponent.on('preRenderStep', function(instance) {
+      if (instance["data-name"] == "George") {
+        instance.special = "George gets special content.";
+      }
+    });
+    XyzComponent.apply(function(instance) {
+      instance.render();
+    });
+  });
 </script>
+
+<style for="xyz">
+  xyz > p {
+    display: inline-block;
+    border-radius: 5px;
+    margin: 0 5px 10px 0;
+    padding: 5px;
+    background: #CDF;
+  }
+</style>

@@ -12,7 +12,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 
   <!-- Code highlighting support -->
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/styles/github.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/styles/darkula.min.css">
   <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/highlight.min.js"></script>
 
   <style for="page">
@@ -50,13 +50,13 @@
         <div class="row">
           <div class="col-md-6">
             <label for="template-fragment-{{template-id}}">Template</label>
-            <template-block id="template-fragment-{{template-id}}"></template-block>
+            <pre><code class="html" id="template-fragment-{{template-id}}"></code></pre>
 
             <label for="javascript-fragment-{{template-id}}">JavaScript</label>
-            <javascript-block id="javascript-fragment-{{template-id}}"></javascript-block>
+            <pre><code class="js" id="javascript-fragment-{{template-id}}"></code></pre>
 
             <label for="stylesheet-fragment-{{template-id}}">Stylesheet</label>
-            <stylesheet-block id="stylesheet-fragment-{{template-id}}"></stylesheet-block>
+            <pre><code class="css" id="stylesheet-fragment-{{template-id}}"></code></pre>
           </div>
           <div class="col-md-6">
             <label for="web-component-output-{{template-id}}">Web Component</label>
@@ -68,69 +68,138 @@
   </template>
 
   <script type="text/javascript" for="create-a-web-component">
-  $(function() {
-    var CreateAWebComponent = Component.configure("create-a-web-component");
+    $(function() {
+      var CreateAWebComponent = Component.configure("create-a-web-component");
 
-    CreateAWebComponent.on("renderComplete", function(instance) {
-      CreateAWebComponent.bindInputEvents(instance);
-      CreateAWebComponent.on('livePreviewUpdated', CreateAWebComponent.displayFragments);
-    });
-
-    CreateAWebComponent.bindInputEvents = function(instance) {
-      $('textarea', instance.element).bind('input propertychange', function() {
-        CreateAWebComponent.updateLivePreview(instance);
+      CreateAWebComponent.on("renderComplete", function(instance) {
+        CreateAWebComponent.bindInputEvents(instance);
+        CreateAWebComponent.on('livePreviewUpdated', CreateAWebComponent.displayFragments);
       });
-      $(instance.element).on('keydown', 'textarea', CreateAWebComponent.catchTab);
-    };
 
-    CreateAWebComponent.updateLivePreview = function(instance) {
-      var source = $('textarea', instance.element).val();
-      var preview = $('live-preview-output', instance.element);
-
-      try {
-        preview.html(source);
-
-        var scripts = $('script', preview);
-        scripts.remove();
-
-        preview.each(function() {
-          var scope = this;
-          Component.registerTemplates(scope).scanForComponents(scope);
+      CreateAWebComponent.bindInputEvents = function(instance) {
+        $('textarea', instance.element).bind('input propertychange', function() {
+          CreateAWebComponent.updateLivePreview(instance);
         });
-        preview.append(scripts);
-        instance.dispatchEvent('livePreviewUpdated');
+        $(instance.element).on('keydown', 'textarea', CreateAWebComponent.catchTab);
+      };
+
+      CreateAWebComponent.updateLivePreview = function(instance) {
+        var source = $('textarea', instance.element).val();
+        var preview = $('live-preview-output', instance.element);
+        preview.html("");
+        try {
+          var parsed = document.createElement('div');
+          parsed.innerHTML = source;
+
+          var templates = $('template', parsed);
+          var styles = $('style', parsed);
+          var scripts = $('script', parsed);
+
+          var display = document.createElement('div');
+          display.innerHTML = source;
+          $('template', display).remove();
+          $('style', display).remove();
+          $('script', display).remove();
+          preview.append(display);
+
+          templates.each(function(key, value) {
+            var displayString = CreateAWebComponent.getHTML(value, true);
+            preview.append(displayString);
+          });
+
+          styles.each(function(key, value) {
+            displayString = CreateAWebComponent.getHTML(value, true);
+            preview.append(displayString);
+          });
+
+          preview.each(function() {
+            var scope = this;
+            Component.registerTemplates(scope).scanForComponents(scope);
+          });
+
+          scripts.each(function(key, value) {
+            var displayString = CreateAWebComponent.getHTML(value, true);
+            preview.append(displayString);
+          });
+
+          instance.dispatchEvent('livePreviewUpdated');
+        } catch (e) {
+          preview.html(e.toString());
+        }
+      };
+
+      CreateAWebComponent.catchTab = function(e) {
+        if (e.keyCode == 9) {
+          var myValue = "\t";
+          var startPos = this.selectionStart;
+          var endPos = this.selectionEnd;
+          var scrollTop = this.scrollTop;
+          this.value = this.value.substring(0, startPos) + myValue + this.value.substring(endPos, this.value.length);
+          this.focus();
+          this.selectionStart = startPos + myValue.length;
+          this.selectionEnd = startPos + myValue.length;
+          this.scrollTop = scrollTop;
+          e.preventDefault();
+        }
+      };
+
+      CreateAWebComponent.displayFragments = function(instance) {
+        var templateBlock = $('code[class="html"]');
+        var stylesheetBlock = $('code[class="css"]');
+        var javascriptBlock = $('code[class="js"]');
+
+        templateBlock.html("");
+        stylesheetBlock.html("");
+        javascriptBlock.html("");
+
+        var source = $('textarea', instance.element).val();
+        var parsed = document.createElement('div');
+        parsed.innerHTML = source;
+
+        var templates = $('template', parsed);
+        var styles = $('style', parsed);
+        var scripts = $('script', parsed);
+
+        templates.each(function(key, value) {
+          var displayString = CreateAWebComponent.getHTML(value, true);
+          displayString = hljs.highlight("html", displayString, true).value;
+          templateBlock.html(displayString);
+        });
+
+        scripts.each(function(key, value) {
+          var displayString = CreateAWebComponent.getHTML(value, true);
+          displayString = hljs.highlight("html", displayString, true).value;
+          javascriptBlock.html(displayString);
+        });
+
+        styles.each(function(key, value) {
+          displayString = CreateAWebComponent.getHTML(value, true);
+          displayString = hljs.highlight("html", displayString, true).value;
+          stylesheetBlock.html(displayString);
+        });
+      };
+
+      CreateAWebComponent.replaceHtmlEntities = function(content) {
+        return String(content).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+      };
+
+      CreateAWebComponent.getHTML = function(who, deep) {
+        if (!who || !who.tagName) return '';
+        var txt, ax, el = document.createElement("div");
+        el.appendChild(who.cloneNode(false));
+        txt = el.innerHTML;
+        if (deep) {
+          ax = txt.indexOf('>') + 1;
+          txt = txt.substring(0, ax) + who.innerHTML + txt.substring(ax);
+        }
+        el = null;
+        return txt;
       }
-      catch(e) {
-        preview.html(e.toString());
-      }
-    };
 
-    CreateAWebComponent.catchTab = function(e) {
-      if (e.keyCode == 9) {
-      	var myValue = "\t";
-      	var startPos = this.selectionStart;
-      	var endPos = this.selectionEnd;
-      	var scrollTop = this.scrollTop;
-      	this.value = this.value.substring(0, startPos) + myValue + this.value.substring(endPos,this.value.length);
-      	this.focus();
-      	this.selectionStart = startPos + myValue.length;
-      	this.selectionEnd = startPos + myValue.length;
-      	this.scrollTop = scrollTop;
-
-      	e.preventDefault();
-      }
-    };
-
-    CreateAWebComponent.displayFragments = function(instance) {
-      var template = $('template-block');
-      var stylesheet = $('stylesheet-block');
-      var javascript = $('javascript-block');
-    };
-
-    CreateAWebComponent.apply(function(instance) {
-      instance.render();
+      CreateAWebComponent.apply(function(instance) {
+        instance.render();
+      });
     });
-  });
   </script>
 
   <template for="live-preview-form">
@@ -147,31 +216,6 @@
     }
   </style>
 
-  <h1>Hello World!</h1>
-  <p>What's new today?</p>
-
-  <xyz data-name="John">Some content goes here.</xyz>
-  <xyz data-name="Anna">Some other content goes here.</xyz>
-  <xyz data-name="George">Your content goes here.</xyz>
-
-  <template for="xyz">
-    <p><b>{{data-name}}</b>, <i>{{content}} {{special}}</i>
-  </template>
-
-  <script type="text/javascript">
-  $(function() {
-  	var XyzComponent = Component.configure('xyz');
-
-  	XyzComponent.on('preRenderStep', function(instance) {
-      if(instance["data-name"] == "George") {
-    		instance.special = "George gets special content.";
-      }
-  	});
-
-  	XyzComponent.apply(function(instance) {
-  		instance.render();
-  	});
-  });
-  </script>
 </body>
+
 </html>
