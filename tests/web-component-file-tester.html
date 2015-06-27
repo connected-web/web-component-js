@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Web Component Examples - File Tester</title>
+
+  <!-- Web Components 101 -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.3/handlebars.js"></script>
+  <script src="../lib/web-component.js"></script>
+
+  <!-- External Web Components under test -->
+  <script src="components/xyz.component.js"></script>
+
+  <style for="page">
+    body { padding: 20px; font-family: sans-serif; }
+  </style>
+
+</head>
+<body>
+  <h1>Web Component File Tester</h1>
+  <p>This page uses externally loaded Web Components encoded using the <i>Web Component Composer</i>.</p>
+
+  <h2>Demo</h2>
+  <p>Lets see how this goes...</p>
+  <p>
+    <xyz data-name="John">William</xyz>
+    <xyz data-name="Anna">Krystyna</xyz>
+    <xyz data-name="Edward">Beech</xyz>
+    <xyz data-name="Elizabeth">Henry</xyz>
+  </p>
+
+</body>
+</html>

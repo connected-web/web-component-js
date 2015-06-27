@@ -180,17 +180,13 @@
         });
       };
 
-      CreateAWebComponent.encodeHtmlForJavaScript = function(html) {
-        return encodeURIComponent(html);
-      }
-
       CreateAWebComponent.encodeHtmlAsJavaScriptString = function(html) {
         var NL = "\n";
         var lines = html.split(NL);
         var result = "";
         for (var i = 0; i < lines.length; i++) {
           var line = lines[i];
-          result += '"' + CreateAWebComponent.encodeHtmlForJavaScript(line) + '"';
+          result += '"' + Component.encodeHtmlForJavaScript(line) + '"';
           if (i < lines.length - 1) {
             result += " + " + NL;
           }
@@ -213,32 +209,43 @@
         var result = '';
         var NL = "\n";
 
-        result += "// Templates " + NL;
+        result += "if (typeof Component === 'undefined') {" + NL +
+        '  var suggestedSource = "https://github.com/Markavian/web-component"' + NL +
+        "  throw new Error('This script requires Web Component JS defined in the page, please see: ' + suggestedSource + ' for more information.');" + NL +
+        "}" + NL;
+
+        result += '$(function() {' + NL;
+
+        result += "  // Templates " + NL;
         var templateData = [];
         templates.each(function(key, value) {
           var fragmentString = CreateAWebComponent.getHTML(value, true);
-          var fragment = CreateAWebComponent.encodeHtmlAsJavaScriptString(fragmentString) + NL;
+          var fragment = CreateAWebComponent.encodeHtmlAsJavaScriptString(fragmentString);
           templateData.push(fragment);
         });
-        result += "var encodedTemplateTags = [" + templateData.join(", ") + "];" + NL;
+        result += "  var encodedTemplateTags = [" + templateData.join(", ") + "];" + NL;
 
-        result += "// Scripts " + NL;
+        result += "  // Scripts " + NL;
         var scriptData = [];
         scripts.each(function(key, value) {
           var fragmentString = CreateAWebComponent.getHTML(value, true);
-          var fragment = CreateAWebComponent.encodeHtmlAsJavaScriptString(fragmentString) + NL;
+          var fragment = CreateAWebComponent.encodeHtmlAsJavaScriptString(fragmentString);
           scriptData.push(fragment);
         });
-        result += "var encodedScriptTags = [" + scriptData.join(", ") + "];" + NL;
+        result += "  var encodedScriptTags = [" + scriptData.join(", ") + "];" + NL;
 
-        result += "// Styles " + NL;
+        result += "  // Styles " + NL;
         var styleData = [];
         styles.each(function(key, value) {
           var fragmentString = CreateAWebComponent.getHTML(value, true);
-          var fragment = CreateAWebComponent.encodeHtmlAsJavaScriptString(fragmentString) + NL;
+          var fragment = CreateAWebComponent.encodeHtmlAsJavaScriptString(fragmentString);
           styleData.push(fragment);
         });
-        result += "var encodedStyleTags = [" + styleData.join(", ") + "];" + NL;
+        result += "  var encodedStyleTags = [" + styleData.join(", ") + "];" + NL;
+
+        result += "  Component.decodeTemplate(encodedTemplateTags, encodedScriptTags, encodedStyleTags);" + NL;
+
+        result += '});' + NL;
 
         outputBlock.html("<pre>" + result + "</pre>");
       };
