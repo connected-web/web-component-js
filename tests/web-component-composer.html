@@ -185,10 +185,12 @@
         var lines = html.split(NL);
         var result = "";
         for (var i = 0; i < lines.length; i++) {
-          var line = lines[i];
-          result += '"' + Component.encodeHtmlForJavaScript(line) + '"';
-          if (i < lines.length - 1) {
-            result += " + " + NL;
+          var line = lines[i].trim() + " ";
+          if(line.substring(0, 2) != "//") {
+            result += '"' + Component.encodeHtmlForJavaScript(line) + '"';
+            if (i < lines.length - 1) {
+              result += " + ";
+            }
           }
         }
         result = result.replace(/%20%20/g, '');
@@ -206,46 +208,42 @@
         var styles = $('style', parsed);
         var scripts = $('script', parsed);
 
-        var result = '';
-        var NL = "\n";
-
-        result += "if (typeof Component === 'undefined') {" + NL +
-        '  var suggestedSource = "https://github.com/Markavian/web-component"' + NL +
-        "  throw new Error('This script requires Web Component JS defined in the page, please see: ' + suggestedSource + ' for more information.');" + NL +
-        "}" + NL;
-
-        result += '$(function() {' + NL;
-
-        result += "  // Templates " + NL;
         var templateData = [];
         templates.each(function(key, value) {
           var fragmentString = CreateAWebComponent.getHTML(value, true);
           var fragment = CreateAWebComponent.encodeHtmlAsJavaScriptString(fragmentString);
           templateData.push(fragment);
         });
-        result += "  var encodedTemplateTags = [" + templateData.join(", ") + "];" + NL;
+        var encodedTemplateTags = "[" + templateData.join(", ") + "]";
 
-        result += "  // Scripts " + NL;
         var scriptData = [];
         scripts.each(function(key, value) {
           var fragmentString = CreateAWebComponent.getHTML(value, true);
           var fragment = CreateAWebComponent.encodeHtmlAsJavaScriptString(fragmentString);
           scriptData.push(fragment);
         });
-        result += "  var encodedScriptTags = [" + scriptData.join(", ") + "];" + NL;
+        var encodedScriptTags = "[" + scriptData.join(", ") + "]";
 
-        result += "  // Styles " + NL;
         var styleData = [];
         styles.each(function(key, value) {
           var fragmentString = CreateAWebComponent.getHTML(value, true);
           var fragment = CreateAWebComponent.encodeHtmlAsJavaScriptString(fragmentString);
           styleData.push(fragment);
         });
-        result += "  var encodedStyleTags = [" + styleData.join(", ") + "];" + NL;
+        var encodedStyleTags = "[" + styleData.join(", ") + "]";
 
-        result += "  Component.decodeTemplate(encodedTemplateTags, encodedScriptTags, encodedStyleTags);" + NL;
+        var scriptUUID = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+          var r = Math.random()*16|0, v = c == 'x' ? r : (r&0x3|0x8);
+          return v.toString(16);
+        });
 
-        result += '});' + NL;
+        var template = Handlebars.compile($('template[for="autoloader"]').html());
+        var result = template({
+          scriptUUID: scriptUUID,
+          encodedTemplateTags: encodedTemplateTags,
+          encodedScriptTags: encodedScriptTags,
+          encodedStyleTags: encodedStyleTags
+        });
 
         outputBlock.html("<pre>" + result + "</pre>");
       };
@@ -279,6 +277,75 @@
         <textarea type="text" class="form-control" id="live-preview-form" placeholder="Type here: <my-component></my-component>" rows="12"></textarea>
       </div>
     </form>
+  </template>
+
+  <template for="autoloader">
+(function() {
+  // The unique ID for this script
+  var scriptUUID = "{{scriptUUID}}";
+
+  // A list of required scripts
+  var requiredScripts = {
+    "jQuery": "https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js",
+    "Handlebars": "https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.3/handlebars.js",
+    "Component": "https://cdn.rawgit.com/Markavian/web-component/1.2.0/lib/web-component.js",
+    "hljs": "http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/highlight.min.js",
+    "marked": "https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.2/marked.min.js"
+  };
+
+  // Helper to priority load a script in the head of the page
+  var loadScript = function(name, path) {
+    var script = document.createElement('script');
+    script.src = path;
+    script.type = 'text/javascript';
+    window["Loading" + name] = script;
+    document.getElementsByTagName('head')[0].appendChild(script);
+    console.log("Make this component load faster by including: " + path + " into the head of this page.");
+  };
+
+  // Helper to check if requirements have loaded
+  var stillWaitingForRequirements = function() {
+    var stillWaiting = false;
+    for(var key in requiredScripts) {
+      if(!window[key]) {
+          stillWaiting = true;
+          break;
+      }
+    }
+    return stillWaiting;
+  }
+
+  // Helper to run scripts at end of
+  var runDeferredScript = function() {
+    (function F() {
+      if(stillWaitingForRequirements()) {
+        setTimeout(F, 50);
+      } else {
+        var X = window[scriptUUID];
+        Component.decodeTemplate(X.templates, X.scripts, X.styles);
+      }
+    })();
+  }
+
+  // Register templates, scripts, and styles for the component
+  window[scriptUUID] = {
+    templates: {{encodedTemplateTags}},
+    scripts: {{encodedScriptTags}},
+    styles: {{encodedStyleTags}}
+  };
+
+  // Priority load required scripts, if not alread in page
+  for(var key in requiredScripts) {
+    if(!window["Loading" + key] || typeof window[key] === 'undefined') {
+      var path = requiredScripts[key];
+      loadScript(key, path);
+    }
+  }
+
+  // Defer the decoding and execution of the template
+  runDeferredScript();
+
+})();
   </template>
 
   <style for="live-preview-form">
