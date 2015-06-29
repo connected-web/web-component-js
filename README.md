@@ -72,7 +72,7 @@ A complete example to get you started:
   <title>Web Component Examples - Index</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.3/handlebars.js"></script>
-  <script src="https://cdn.rawgit.com/Markavian/web-component/1.0/lib/web-component.js"></script>
+  <script src="https://cdn.rawgit.com/Markavian/web-component/1.2.0/lib/web-component.js"></script>
 
   <style for="page">
     body { padding: 20px; font-family: sans-serif; }
@@ -91,7 +91,7 @@ A complete example to get you started:
       </a>
     </li>
   </template>
-<body>
+</body>
 </html>
 ```
 
