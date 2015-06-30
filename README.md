@@ -120,6 +120,9 @@ Please see the wiki for documentation and examples on using the Web Component li
 Changelog
 ---------
 
+### 1.2.1
+* Added the self-resolving dependency script from the Composer to web-component.js
+
 ### 1.2.0
 * Added Web Component Composer
 * Added file encoding and decoding to `web-component.js`
