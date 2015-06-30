@@ -4,9 +4,9 @@ A javascript library for very simply adding data driven web components to a HTML
 
 Recent Releases
 ---------------
-**Version 1.2.1** (In field testing)
+**Version 1.2.2**
 30th June 2015
-* https://cdn.rawgit.com/connected-web/web-component-js/1.2.1/lib/web-component.js
+* https://cdn.rawgit.com/connected-web/web-component-js/1.2.2/lib/web-component.js
 
 **Version 1.2.0** (In field testing)
 27th June 2015
@@ -50,16 +50,16 @@ Web Component is a javascript library that can turn custom HTML tags, for exampl
 Online Demos
 ------------
 Basic examples:
-* `index.html` : [Index - Basic Examples](https://cdn.rawgit.com/connected-web/web-component-js/1.2.1/tests/index.html)
-* `data-loading.html` : [Data Loading - Using Static Data](https://cdn.rawgit.com/connected-web/web-component-js/1.2.1/tests/data-loading.html)
-* `tests/monitor-debug.html` : [Test Harness for Rendering](https://cdn.rawgit.com/connected-web/web-component-js/1.2.1/tests/monitor-debug.html)
+* `index.html` : [Index - Basic Examples](https://cdn.rawgit.com/connected-web/web-component-js/1.2.2/tests/index.html)
+* `data-loading.html` : [Data Loading - Using Static Data](https://cdn.rawgit.com/connected-web/web-component-js/1.2.2/tests/data-loading.html)
+* `tests/monitor-debug.html` : [Test Harness for Rendering](https://cdn.rawgit.com/connected-web/web-component-js/1.2.2/tests/monitor-debug.html)
 
 The really cool stuff:
-* `tests/web-component-file-tester.html` [Web Component File Tester for Testing File Includes](https://cdn.rawgit.com/connected-web/web-component-js/1.2.1/tests/web-component-file-tester.html)
-* `tests/web-component-composer.html` [Web Component Composer for Creating File Includes](https://cdn.rawgit.com/connected-web/web-component-js/1.2.1/tests/web-component-composer.html)
+* `tests/web-component-file-tester.html` [Web Component File Tester for Testing File Includes](https://cdn.rawgit.com/connected-web/web-component-js/1.2.2/tests/web-component-file-tester.html)
+* `tests/web-component-composer.html` [Web Component Composer for Creating File Includes](https://cdn.rawgit.com/connected-web/web-component-js/1.2.2/tests/web-component-composer.html)
 
 ### Sample data
-* `data/credits.json` : [Static Data for Data Loading](https://cdn.rawgit.com/connected-web/web-component-js/1.21/tests/data/credits.json)
+* `data/credits.json` : [Static Data for Data Loading](https://cdn.rawgit.com/connected-web/web-component-js/1.2.2/tests/data/credits.json)
 
 How to use
 ----------
@@ -76,7 +76,7 @@ A complete example to get you started:
   <title>Web Component Examples - Index</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.3/handlebars.js"></script>
-  <script src="https://cdn.rawgit.com/connected-web/web-component-js/1.2.1/lib/web-component.js"></script>
+  <script src="https://cdn.rawgit.com/connected-web/web-component-js/1.2.2/lib/web-component.js"></script>
 
   <style for="page">
     body { padding: 20px; font-family: sans-serif; }
@@ -124,9 +124,10 @@ Please see the wiki for documentation and examples on using the Web Component li
 Changelog
 ---------
 
-### 1.2.1
+### 1.2.2
 * Added the self-resolving dependency script from the Composer to web-component.js
 * Changed project location to https://github.com/connected-web/web-component-js/
+* Improved handling of decoded templates to occur at an appropriate time
 
 ### 1.2.0
 * Added Web Component Composer
