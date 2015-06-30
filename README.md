@@ -4,6 +4,10 @@ A javascript library for very simply adding data driven web components to a HTML
 
 Recent Releases
 ---------------
+**Version 1.2.1** (In field testing)
+30th June 2015
+* https://cdn.rawgit.com/Markavian/web-component/1.2.0/lib/web-component.js
+* 
 **Version 1.2.0** (In field testing)
 27th June 2015
 * https://cdn.rawgit.com/Markavian/web-component/1.2.0/lib/web-component.js
