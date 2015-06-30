@@ -4,9 +4,9 @@ A javascript library for very simply adding data driven web components to a HTML
 
 Recent Releases
 ---------------
-**Version 1.2.1** (In field testing)
+**Version 1.2.2**
 30th June 2015
-* https://cdn.rawgit.com/connected-web/web-component-js/1.2.1/lib/web-component.js
+* https://cdn.rawgit.com/connected-web/web-component-js/1.2.2/lib/web-component.js
 
 **Version 1.2.0** (In field testing)
 27th June 2015
@@ -124,9 +124,10 @@ Please see the wiki for documentation and examples on using the Web Component li
 Changelog
 ---------
 
-### 1.2.1
+### 1.2.2
 * Added the self-resolving dependency script from the Composer to web-component.js
 * Changed project location to https://github.com/connected-web/web-component-js/
+* Improved handling of decoded templates to occur at an appropriate time
 
 ### 1.2.0
 * Added Web Component Composer
