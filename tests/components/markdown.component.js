@@ -4,7 +4,7 @@
 
   // A list of required scripts
   var requiredScripts = {
-    "Component": "https://cdn.rawgit.com/connected-web/web-component-js/1.2.1/lib/web-component.js",
+    "Component": "https://cdn.rawgit.com/connected-web/web-component-js/1.2.2/lib/web-component.js",
     "hljs": "http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/highlight.min.js",
     "marked": "https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.2/marked.min.js"
   };
@@ -52,7 +52,7 @@
 
   // Priority load required scripts, if not alread in page
   for(var key in requiredScripts) {
-    if(!window["Loading" + key] || typeof window[key] === 'undefined') {
+    if(!window["Loading" + key] && typeof window[key] === 'undefined') {
       var path = requiredScripts[key];
       loadScript(key, path);
     }

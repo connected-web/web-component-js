@@ -37,16 +37,16 @@
   </demo>
 
   <!-- Templates -->
-  <template tagName="demo">
+  <template for="demo">
     <h2>{{name}}</h2>
     <p>{{content}}</p>
   </template>
 
-  <template tagName="pair">
+  <template for="pair">
     <b>{{key}}</b>: <i>{{value}}</i>
   </template>
 
-  <template tagName="person">
+  <template for="person">
     <h3>{{name}}</h3>
     <ul>
       <li><pair key="Age" value="{{age}}"></pair></li>
@@ -66,7 +66,7 @@
     person > h3 { margin-top: 0; text-align: center; }
   </style>
 
-  <template tagName="requirement">
+  <template for="requirement">
     <h3>{{name}}</h3>
     <p><li><a href="{{link}}">{{link}}</a></li></p>
     <p>{{content}}</p>
@@ -83,11 +83,11 @@
     requirement > h3 { margin-top: 0; }
   </style>
 
-  <template tagName="instruction">
+  <template for="instruction">
     <span style="font-weight: bold;">{{content}}</span>
   </template>
 
-  <template tagName="viewsource">
+  <template for="viewsource">
     <a href="javascript:(window.location='view-source:'+window.location)">
       <instruction>
         {{content}}

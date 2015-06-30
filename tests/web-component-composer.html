@@ -332,7 +332,7 @@
 
   // Priority load required scripts, if not alread in page
   for(var key in requiredScripts) {
-    if(!window["Loading" + key] || typeof window[key] === 'undefined') {
+    if(!window["Loading" + key] && typeof window[key] === 'undefined') {
       var path = requiredScripts[key];
       loadScript(key, path);
     }
