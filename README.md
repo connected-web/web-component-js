@@ -76,7 +76,7 @@ A complete example to get you started:
   <title>Web Component Examples - Index</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.3/handlebars.js"></script>
-  <script src="https://cdn.rawgit.com/connected-web/web-component-js/1.2.1/lib/web-component.js"></script>
+  <script src="https://cdn.rawgit.com/connected-web/web-component-js/1.2.2/lib/web-component.js"></script>
 
   <style for="page">
     body { padding: 20px; font-family: sans-serif; }
