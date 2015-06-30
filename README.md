@@ -6,7 +6,7 @@ Recent Releases
 ---------------
 **Version 1.2.1** (In field testing)
 30th June 2015
-* https://cdn.rawgit.com/connected-web/web-component-js/1.2.2/lib/web-component.js
+* https://cdn.rawgit.com/connected-web/web-component-js/1.2.1/lib/web-component.js
 
 **Version 1.2.0** (In field testing)
 27th June 2015
@@ -14,7 +14,7 @@ Recent Releases
 
 **Version 1.1.3** (Out classed by 1.2.0)
 25th June 2015
-*https://cdn.rawgit.com/connected-web/web-component-js/1.1.3/lib/web-component.js
+* https://cdn.rawgit.com/connected-web/web-component-js/1.1.3/lib/web-component.js
 
 **Version 1.1.2** (Seems ok)
 22nd June 2015
