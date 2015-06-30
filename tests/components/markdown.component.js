@@ -4,9 +4,7 @@
 
   // A list of required scripts
   var requiredScripts = {
-    "jQuery": "https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js",
-    "Handlebars": "https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.3/handlebars.js",
-    "Component": "https://cdn.rawgit.com/Markavian/web-component/1.2.0/lib/web-component.js",
+    "Component": "https://cdn.rawgit.com/Markavian/web-component/1.2.1/lib/web-component.js",
     "hljs": "http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/highlight.min.js",
     "marked": "https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.2/marked.min.js"
   };
@@ -25,7 +23,6 @@
   var stillWaitingForRequirements = function() {
     var stillWaiting = false;
     for(var key in requiredScripts) {
-      console.log("R: " + window["Loading" + key]);
       if(!window[key]) {
           stillWaiting = true;
           break;
