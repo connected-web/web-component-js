@@ -4,9 +4,9 @@
 
   // A list of required scripts
   var requiredScripts = {
-    "Component": "https://cdn.rawgit.com/connected-web/web-component-js/1.2.2/lib/web-component.js",
-    "hljs": "http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/highlight.min.js",
-    "marked": "https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.2/marked.min.js"
+    "Component": "//cdn.rawgit.com/connected-web/web-component-js/1.2.2/lib/web-component.js",
+    "hljs": "//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/highlight.min.js",
+    "marked": "//cdnjs.cloudflare.com/ajax/libs/marked/0.3.2/marked.min.js"
   };
 
   // Helper to priority load a script in the head of the page
