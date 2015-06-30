@@ -6,31 +6,31 @@ Recent Releases
 ---------------
 **Version 1.2.1** (In field testing)
 30th June 2015
-* https://cdn.rawgit.com/Markavian/web-component/1.2.0/lib/web-component.js
-* 
+* https://cdn.rawgit.com/connected-web/web-component-js/1.2.2/lib/web-component.js
+
 **Version 1.2.0** (In field testing)
 27th June 2015
-* https://cdn.rawgit.com/Markavian/web-component/1.2.0/lib/web-component.js
+* https://cdn.rawgit.com/connected-web/web-component-js/1.2.0/lib/web-component.js
 
 **Version 1.1.3** (Out classed by 1.2.0)
 25th June 2015
-* https://cdn.rawgit.com/Markavian/web-component/1.1.3/lib/web-component.js
+*https://cdn.rawgit.com/connected-web/web-component-js/1.1.3/lib/web-component.js
 
 **Version 1.1.2** (Seems ok)
 22nd June 2015
-* https://cdn.rawgit.com/Markavian/web-component/1.1.2/lib/web-component.js
+* https://cdn.rawgit.com/connected-web/web-component-js/1.1.2/lib/web-component.js
 
 **Version 1.1.1** (Stable)
 16th June 2015
-* https://cdn.rawgit.com/Markavian/web-component/1.1.1/lib/web-component.js
+* https://cdn.rawgit.com/connected-web/web-component-js/1.1.1/lib/web-component.js
 
 **Version 1.0.1** (Memory Leak, please upgrade)
 12th June 2015
-* https://cdn.rawgit.com/Markavian/web-component/1.0.1/lib/web-component.js
+* https://cdn.rawgit.com/connected-web/web-component-js/1.0.1/lib/web-component.js
 
 **Version 1.0** (Newborn)
 11th June 2015
-* https://cdn.rawgit.com/Markavian/web-component/1.0/lib/web-component.js
+* https://cdn.rawgit.com/connected-web/web-component-js/1.0/lib/web-component.js
 
 Dependencies
 ------------
@@ -50,16 +50,16 @@ Web Component is a javascript library that can turn custom HTML tags, for exampl
 Online Demos
 ------------
 Basic examples:
-* `index.html` : [Index - Basic Examples](https://cdn.rawgit.com/Markavian/web-component/1.2.0/tests/index.html)
-* `data-loading.html` : [Data Loading - Using Static Data](https://cdn.rawgit.com/Markavian/web-component/1.2.0/tests/data-loading.html)
-* `tests/monitor-debug.html` : [Test Harness for Rendering](https://cdn.rawgit.com/Markavian/web-component/1.2.0/tests/monitor-debug.html)
+* `index.html` : [Index - Basic Examples](https://cdn.rawgit.com/connected-web/web-component-js/1.2.1/tests/index.html)
+* `data-loading.html` : [Data Loading - Using Static Data](https://cdn.rawgit.com/connected-web/web-component-js/1.2.1/tests/data-loading.html)
+* `tests/monitor-debug.html` : [Test Harness for Rendering](https://cdn.rawgit.com/connected-web/web-component-js/1.2.1/tests/monitor-debug.html)
 
 The really cool stuff:
-* `tests/web-component-file-tester.html` [Web Component File Tester for Testing File Includes](https://cdn.rawgit.com/Markavian/web-component/1.2.0/tests/web-component-file-tester.html)
-* `tests/web-component-composer.html` [Web Component Composer for Creating File Includes](https://cdn.rawgit.com/Markavian/web-component/1.2.0/tests/web-component-composer.html)
+* `tests/web-component-file-tester.html` [Web Component File Tester for Testing File Includes](https://cdn.rawgit.com/connected-web/web-component-js/1.2.1/tests/web-component-file-tester.html)
+* `tests/web-component-composer.html` [Web Component Composer for Creating File Includes](https://cdn.rawgit.com/connected-web/web-component-js/1.2.1/tests/web-component-composer.html)
 
 ### Sample data
-* `data/credits.json` : [Static Data for Data Loading](https://cdn.rawgit.com/Markavian/web-component/1.2.0/tests/data/credits.json)
+* `data/credits.json` : [Static Data for Data Loading](https://cdn.rawgit.com/connected-web/web-component-js/1.21/tests/data/credits.json)
 
 How to use
 ----------
@@ -76,7 +76,7 @@ A complete example to get you started:
   <title>Web Component Examples - Index</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.3/handlebars.js"></script>
-  <script src="https://cdn.rawgit.com/Markavian/web-component/1.2.0/lib/web-component.js"></script>
+  <script src="https://cdn.rawgit.com/connected-web/web-component-js/1.2.1/lib/web-component.js"></script>
 
   <style for="page">
     body { padding: 20px; font-family: sans-serif; }
@@ -126,6 +126,7 @@ Changelog
 
 ### 1.2.1
 * Added the self-resolving dependency script from the Composer to web-component.js
+* Changed project location to https://github.com/connected-web/web-component-js/
 
 ### 1.2.0
 * Added Web Component Composer
@@ -162,5 +163,5 @@ Changelog
 * Statically linked data to CDN.
 * Added basic examples and data-loading example.
 * Created static HTML template for testing out web-component.js
-* Extracted component.js from [product-monitor](https://github.com/johnbeech/product-monitor) project to make web-component.js.
+* Extracted component.js from [product-monitor](https://github.com/connected-web/product-monitor) project to make web-component.js.
 * Initial commit
