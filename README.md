@@ -123,6 +123,14 @@ Please see the wiki for documentation and examples on using the Web Component li
 
 Changelog
 ---------
+### Unreleased changes
+* Compiler for `*.component.html` files
+* Usage:
+```js
+var compiler = require('../web-component-js').compiler;
+compiler.compile('lib', 'dist');
+```
+
 ### 1.2.3
 * Added NPM support and started work on compiler
 
