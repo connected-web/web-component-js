@@ -1,0 +1,51 @@
+<template for="markdown">{{{markdown}}}</template>
+
+<style for="markdown">
+markdown {
+  white-space: pre;
+  display: block;
+  unicode-bidi: embed;
+}
+markdown[rendered] {
+  white-space: normal;
+}
+markdown > table {
+  border-spacing: 1px;
+  border-collapse: separate;
+  margin: 0 0 10px;
+}
+
+markdown > table > thead > tr > th {
+  padding: 6px;
+}
+
+markdown > table > tbody > tr > td {
+  padding: 6px;
+}
+</style>
+
+<script type="text/javascript">
+$(function() {
+  var MarkdownComponent = Component.configure("markdown");
+
+  MarkdownComponent.on('preRenderStep', function(instance) {
+    if(typeof marked === "undefined") {
+      var suggestedCDN = "https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.2/marked.min.js";
+      marked = function() {
+        return 'This markdown component requires the JavaScript marked library, please include the following into your page: ' + suggestedCDN;
+      }
+    }
+
+    instance.markdown = marked(instance.content);
+  });
+
+  MarkdownComponent.on('renderComplete', function(instance) {
+    $('pre', instance.element).addClass('hljs');
+  });
+
+  MarkdownComponent.apply(function(instance) {
+    instance.render();
+  });
+});
+
+</script>

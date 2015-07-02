@@ -1,0 +1,23 @@
+<template for="codeblock">
+  <pre>
+    <code>{{divContents}}</code>
+  </pre>
+</template>
+
+<script for="codeblock">
+  $(function() {
+    var CodeBlockComponent = Component.configure("codeblock");
+    CodeBlockComponent.on('preRenderStep', function(instance) {
+      var targetId = instance['from-target'];
+      var targetElement = document.getElementById(targetId);
+      if (targetElement) {
+        instance.divContents = targetElement.innerHTML;
+      } else {
+        instance.divContents = "Element: " + targetId + " not found";
+      }
+    });
+    CodeBlockComponent.apply(function(instance) {
+      instance.render();
+    });
+  });
+</script>
