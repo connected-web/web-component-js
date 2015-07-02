@@ -1,0 +1,30 @@
+{
+  "name": "web-component-js",
+  "version": "1.2.3",
+  "description": "A javascript library for very simply adding data driven web components to a HTML page, by defining your own domain specific, HTML language via templates.",
+  "main": "lib/npm-module.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/connected-web/web-component-js.git"
+  },
+  "keywords": [
+    "html5",
+    "javascript",
+    "webcomponents"
+  ],
+  "author": "John Beech",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/connected-web/web-component-js/issues"
+  },
+  "homepage": "https://github.com/connected-web/web-component-js#readme",
+  "files": [
+    "lib"
+  ]
+}

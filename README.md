@@ -4,6 +4,10 @@ A javascript library for very simply adding data driven web components to a HTML
 
 Recent Releases
 ---------------
+**Version 1.2.3**
+2nd July 2015
+* Added NPM support and started work on compiler
+
 **Version 1.2.2**
 30th June 2015
 * https://cdn.rawgit.com/connected-web/web-component-js/1.2.2/lib/web-component.js
