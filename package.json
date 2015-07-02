@@ -26,5 +26,8 @@
   "homepage": "https://github.com/connected-web/web-component-js#readme",
   "files": [
     "lib"
-  ]
+  ],
+  "dependencies": {
+    "glob": "^5.0.13"
+  }
 }
