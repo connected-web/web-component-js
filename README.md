@@ -3,10 +3,6 @@ Web Component
 A javascript library for very simply adding data driven web components to a HTML page, by defining your own domain specific, HTML language via templates.
 
 Recent Releases
----------------
-**Version 1.2.3**
-2nd July 2015
-* Added NPM support and started work on compiler
 
 **Version 1.2.2**
 30th June 2015
@@ -127,6 +123,8 @@ Please see the wiki for documentation and examples on using the Web Component li
 
 Changelog
 ---------
+### 1.2.3
+* Added NPM support and started work on compiler
 
 ### 1.2.2
 * Added the self-resolving dependency script from the Composer to web-component.js
