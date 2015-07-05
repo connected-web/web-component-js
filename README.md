@@ -1,5 +1,5 @@
-Web Component
-=============
+Web Component JS
+================
 A javascript library for very simply adding data driven web components to a HTML page, by defining your own domain specific, HTML language via templates.
 
 Recent Releases
