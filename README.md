@@ -4,33 +4,13 @@ A javascript library for very simply adding data driven web components to a HTML
 
 Recent Releases
 
-**Version 1.2.2**
+**Version 1.2.3** (In testing, supports loading of its own dependencies)
+July 2nd 2015
+* https://cdn.rawgit.com/connected-web/web-component-js/1.2.3/lib/web-component.js
+
+**Version 1.2.0** (Seems stable, old style depdendency errors)
 30th June 2015
-* https://cdn.rawgit.com/connected-web/web-component-js/1.2.2/lib/web-component.js
-
-**Version 1.2.0** (In field testing)
-27th June 2015
 * https://cdn.rawgit.com/connected-web/web-component-js/1.2.0/lib/web-component.js
-
-**Version 1.1.3** (Out classed by 1.2.0)
-25th June 2015
-* https://cdn.rawgit.com/connected-web/web-component-js/1.1.3/lib/web-component.js
-
-**Version 1.1.2** (Seems ok)
-22nd June 2015
-* https://cdn.rawgit.com/connected-web/web-component-js/1.1.2/lib/web-component.js
-
-**Version 1.1.1** (Stable)
-16th June 2015
-* https://cdn.rawgit.com/connected-web/web-component-js/1.1.1/lib/web-component.js
-
-**Version 1.0.1** (Memory Leak, please upgrade)
-12th June 2015
-* https://cdn.rawgit.com/connected-web/web-component-js/1.0.1/lib/web-component.js
-
-**Version 1.0** (Newborn)
-11th June 2015
-* https://cdn.rawgit.com/connected-web/web-component-js/1.0/lib/web-component.js
 
 Dependencies
 ------------
@@ -50,16 +30,16 @@ Web Component is a javascript library that can turn custom HTML tags, for exampl
 Online Demos
 ------------
 Basic examples:
-* `index.html` : [Index - Basic Examples](https://cdn.rawgit.com/connected-web/web-component-js/1.2.2/tests/index.html)
-* `data-loading.html` : [Data Loading - Using Static Data](https://cdn.rawgit.com/connected-web/web-component-js/1.2.2/tests/data-loading.html)
-* `tests/monitor-debug.html` : [Test Harness for Rendering](https://cdn.rawgit.com/connected-web/web-component-js/1.2.2/tests/monitor-debug.html)
+* `index.html` : [Index - Basic Examples](https://cdn.rawgit.com/connected-web/web-component-js/1.2.3/tests/index.html)
+* `data-loading.html` : [Data Loading - Using Static Data](https://cdn.rawgit.com/connected-web/web-component-js/1.2.3/tests/data-loading.html)
+* `tests/monitor-debug.html` : [Test Harness for Rendering](https://cdn.rawgit.com/connected-web/web-component-js/1.2.3/tests/monitor-debug.html)
 
 The really cool stuff:
-* `tests/web-component-file-tester.html` [Web Component File Tester for Testing File Includes](https://cdn.rawgit.com/connected-web/web-component-js/1.2.2/tests/web-component-file-tester.html)
-* `tests/web-component-composer.html` [Web Component Composer for Creating File Includes](https://cdn.rawgit.com/connected-web/web-component-js/1.2.2/tests/web-component-composer.html)
+* `tests/web-component-file-tester.html` [Web Component File Tester for Testing File Includes](https://cdn.rawgit.com/connected-web/web-component-js/1.2.3/tests/web-component-file-tester.html)
+* `tests/web-component-composer.html` [Web Component Composer for Creating File Includes](https://cdn.rawgit.com/connected-web/web-component-js/1.2.3/tests/web-component-composer.html)
 
 ### Sample data
-* `data/credits.json` : [Static Data for Data Loading](https://cdn.rawgit.com/connected-web/web-component-js/1.2.2/tests/data/credits.json)
+* `data/credits.json` : [Static Data for Data Loading](https://cdn.rawgit.com/connected-web/web-component-js/1.2.3/tests/data/credits.json)
 
 How to use
 ----------
@@ -74,9 +54,7 @@ A complete example to get you started:
 <html>
 <head>
   <title>Web Component Examples - Index</title>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.3/handlebars.js"></script>
-  <script src="https://cdn.rawgit.com/connected-web/web-component-js/1.2.2/lib/web-component.js"></script>
+  <script src="https://cdn.rawgit.com/connected-web/web-component-js/1.2.3/lib/web-component.js"></script>
 
   <style for="page">
     body { padding: 20px; font-family: sans-serif; }
@@ -132,14 +110,17 @@ compiler.compile('lib', 'dist');
 ```
 
 ### 1.2.3
+2nd July 2015
 * Added NPM support and started work on compiler
 
-### 1.2.2
+### 1.2.2 
+30th June 2015
 * Added the self-resolving dependency script from the Composer to web-component.js
 * Changed project location to https://github.com/connected-web/web-component-js/
 * Improved handling of decoded templates to occur at an appropriate time
 
 ### 1.2.0
+27th June 2015
 * Added Web Component Composer
 * Added file encoding and decoding to `web-component.js`
 * Added events to ComponentClass model
@@ -149,11 +130,13 @@ compiler.compile('lib', 'dist');
 * Added `ComponentClass.registeredComponents` list, enabling `ComponentClass.apply(function(instance) { ... })`
 
 ### 1.1.2
+22nd June 2015
 * Moved jQuery data loading into an adapter
 * Created `ComponentDataSources` class to hold data adapters
 * Added `ComponentDataSources.register` method to allow new data adapters to be registered
 
 ### 1.1.1
+16th June 2015
 * Fix for broken `<template for="element-name">` component registration.
 * Deprecated `<template tagName="element-name">` in favour of `<template for="element-name">`
 * Changed default dataSourceType value to `false` from `jsonp`
@@ -167,9 +150,11 @@ compiler.compile('lib', 'dist');
 * Did not scan correctly for templates in the form `<template for="element-name">`
 
 ### 1.0.1
+12th June 2015
 * Added fail message to data loading based on jQuery spec.
 
-### 1.0
+### 1.0 (Newborn)
+11th June 2015
 * Changed example data into JSON format.
 * Statically linked data to CDN.
 * Added basic examples and data-loading example.
