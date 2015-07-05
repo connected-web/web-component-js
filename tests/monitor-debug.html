@@ -27,13 +27,12 @@
   <h2>Monitor Status Debug</h2>
   <p>Test harness for hitting local server data.</p>
 
-  <navigation data-source-url="data/navigation.json">
+  <wrapper data-source-url="data/wrapper.json" icon="link">
     <monitor-status name="product-monitor" data-source-url="data/monitorStatus.json">{{data-source-url}}</monitor-status>
-  </navigation>
+  </wrapper>
 
-  <template for="navigation" refresh-time="30">
-    <button type="button" class="btn btn-{{alertType}}">
-      <span class="glyphicon glyphicon-{{glyphIcon}}"></span>
+  <template for="wrapper" refresh-time="30">
+    <button type="button" class="btn btn-default">
       <span>{{content}}</span>
     </button>
   </template>
