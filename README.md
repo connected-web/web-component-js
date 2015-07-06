@@ -47,7 +47,7 @@ Some example JSON data to help with the examples:
 
 Using Web Component JS
 ----------------------
-1. Copy script tags for jQuery, Handlebars, and Web Component into the `<head></head>` of your HTML page
+1. Copy script tags for Web Component JS into the `<head></head>` of your HTML page
 2. Define a `<template for="your-custom-element"></template>` tag
 3. Insert your custom tags into the page
 4. Load the page in a web browser to see your custom tags render
@@ -58,7 +58,7 @@ A complete example to get you started:
 <html>
 <head>
   <title>Web Component Examples - Index</title>
-  <script src="https://cdn.rawgit.com/connected-web/web-component-js/1.2.3/lib/web-component.js"></script>
+  <script src="https://cdn.rawgit.com/connected-web/web-component-js/1.2.4/lib/web-component.js"></script>
 
   <style for="page">
     body { padding: 20px; font-family: sans-serif; }
@@ -112,6 +112,11 @@ Changelog
 var compiler = require('../web-component-js').compiler;
 compiler.compile('lib', 'dist');
 ```
+
+### 1.2.4
+6th July 2015
+* Updated examples and created tools folder for composer
+* Template tags are now removed from the page when the DOM is scanned
 
 ### 1.2.3
 2nd July 2015
