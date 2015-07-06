@@ -19,7 +19,7 @@ Dependencies
 
 What it can do
 --------------
-Web Component is a javascript library that can turn custom HTML tags, for example:
+Web Component is a javascript library that can convert custom HTML tags, like in this example...
 
 ![Web Component Data Loading Example Source](images/data-loading-example-source.png)
 
