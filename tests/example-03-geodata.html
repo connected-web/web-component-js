@@ -6,6 +6,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.3/handlebars.js"></script>
   <script src="../lib/web-component.js"></script>
+  <script src="components/navbar.component.js"></script>
 
   <!-- All the boostrap theming -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
@@ -22,7 +23,9 @@
 </head>
 
 <body>
-  <h1>Geo Location Data Example</h1>
+  <navbar data-source-url="data/navigation.json"></navbar>
+
+  <h1>Web Component Examples - Geo Location Data</h1>
   <p>Playing around with some local data.</p>
 
   <geo-names data-source-url="data/geoNames.json"></geo-names>

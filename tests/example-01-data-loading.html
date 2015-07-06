@@ -5,6 +5,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.3/handlebars.js"></script>
   <script src="../lib/web-component.js"></script>
+  <script src="components/navbar.component.js"></script>
 
   <style for="page">
     body { padding: 20px; font-family: sans-serif; }
@@ -12,10 +13,12 @@
 
 </head>
 <body>
-  <h1>Web Component</h1>
+  <navbar data-source-url="data/navigation.json"></navbar>
+
+  <h1>Web Component Examples - Data Loading</h1>
   <p>More web component examples, showing cool stuff you can do by configuring templates to load data.</p>
 
-  <h2>Data Loading</h2>
+  <h2>Data Loading Basics</h2>
 
   <demo name="Credits Example">
     <p>An example of loading JSON using a <code>credits</code> template:</p>
@@ -33,6 +36,7 @@
   <template tagName="credits" data-source-template="https://cdn.rawgit.com/Markavian/web-component/1.0.1/tests/{{credits-file}}" data-source-type="json">
     <p>Credits for <b>cached data from <a href="{{dataSourceUrl}}">{{dataSourceUrl}}</a></b>: </p>
     <p>
+    <!-- Example of Handlebars.js templating to iterate over array -->
     {{#each data}}
       <link-button href="{{html_url}}">
         <img src="{{avatar}}" class="avatar" alt="{{name}}" height="30" />
@@ -41,7 +45,10 @@
       </link-button>
     {{/each}}
     </p>
+    <!-- Magic properties for debugging data loading -->
     <pre>{{dataSourceStatus}}</pre>
+    <pre>{{dataSourceUrl}}</pre>
+    <pre>{{dataSourceData}}</pre>
   </template>
 
   <style for="credits">

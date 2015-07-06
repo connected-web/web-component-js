@@ -1,18 +1,18 @@
 {
-  "contentPath": "monitoring/content",
-  "fileList": [
-    "example-endpoint-template.content.html",
-    "product-credits.content.html"
-  ],
-  "contentList": [
-    "example-endpoint-template",
-    "product-credits"
-  ],
-  "navigationItems": [{
-    "linkText": "Example Endpoint Template",
-    "href": "/content/example-endpoint-template"
+  "items": [{
+    "linkText": "Index of Examples",
+    "href": "/tests/index.html"
   }, {
-    "linkText": "Product Credits",
-    "href": "/content/product-credits"
+    "linkText": "Example 01 Data Loading",
+    "href": "/tests/example-01-data-loading.html"
+  }, {
+    "linkText": "Example 02 Nesting",
+    "href": "/tests/example-02-nesting.html"
+  }, {
+    "linkText": "Example 03 Geo Data",
+    "href": "/tests/example-03-geodata.html"
+  }, {
+    "linkText": "Example 04 CDN Hosting",
+    "href": "/tests/example-04-cdn-hosting.html"
   }]
 }

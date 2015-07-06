@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>Web Component Examples - File Tester</title>
+  <title>Web Component Examples - CDN Hosting</title>
 
   <!-- Code highlighting support -->
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/styles/darkula.min.css">
@@ -12,6 +12,7 @@
   <script src="components/xyz.component.js"></script>
   <script src="components/markdown.component.js"></script>
   <script src="components/code.component.js"></script>
+  <script src="components/navbar.component.js"></script>
 
   <style for="page">
     body {
@@ -23,7 +24,9 @@
 </head>
 
 <body>
-  <h1>Web Component File Tester</h1>
+  <navbar data-source-url="data/navigation.json"></navbar>
+
+  <h1>Web Component Examples - CDN Hosting</h1>
   <p>This page uses externally loaded Web Components encoded using the <i>Web Component Composer</i>.</p>
 
   <h2>XYZ Demo</h2>
