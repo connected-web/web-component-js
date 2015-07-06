@@ -1,18 +1,18 @@
 {
   "items": [{
     "linkText": "Index of Examples",
-    "href": "/tests/index.html"
+    "href": "index.html"
   }, {
     "linkText": "Example 01 Data Loading",
-    "href": "/tests/example-01-data-loading.html"
+    "href": "example-01-data-loading.html"
   }, {
     "linkText": "Example 02 Nesting",
-    "href": "/tests/example-02-nesting.html"
+    "href": "example-02-nesting.html"
   }, {
     "linkText": "Example 03 Geo Data",
-    "href": "/tests/example-03-geodata.html"
+    "href": "example-03-geodata.html"
   }, {
     "linkText": "Example 04 CDN Hosting",
-    "href": "/tests/example-04-cdn-hosting.html"
+    "href": "example-04-cdn-hosting.html"
   }]
 }
