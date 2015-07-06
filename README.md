@@ -4,9 +4,9 @@ A javascript library for very simply adding data driven web components to a HTML
 
 Recent Releases
 
-**Version 1.2.3** (In testing, supports loading of its own dependencies)
-July 2nd 2015
-* https://cdn.rawgit.com/connected-web/web-component-js/1.2.3/lib/web-component.js
+**Version 1.2.4** (In testing, supports loading of its own dependencies)
+July 6th 2015
+* https://cdn.rawgit.com/connected-web/web-component-js/1.2.4/lib/web-component.js
 
 **Version 1.2.0** (Seems stable, old style depdendency errors)
 30th June 2015
@@ -29,20 +29,24 @@ Web Component is a javascript library that can convert custom HTML tags, like in
 
 Online Demos
 ------------
-Basic examples:
-* `index.html` : [Index - Basic Examples](https://cdn.rawgit.com/connected-web/web-component-js/1.2.3/tests/index.html)
-* `data-loading.html` : [Data Loading - Using Static Data](https://cdn.rawgit.com/connected-web/web-component-js/1.2.3/tests/data-loading.html)
-* `tests/monitor-debug.html` : [Test Harness for Rendering](https://cdn.rawgit.com/connected-web/web-component-js/1.2.3/tests/monitor-debug.html)
+* `index.html` : [Web Component JS - Index of Examples](https://cdn.rawgit.com/connected-web/web-component-js/1.2.4/tests/index.html)
 
-The really cool stuff:
-* `tests/web-component-file-tester.html` [Web Component File Tester for Testing File Includes](https://cdn.rawgit.com/connected-web/web-component-js/1.2.3/tests/web-component-file-tester.html)
-* `tests/web-component-composer.html` [Web Component Composer for Creating File Includes](https://cdn.rawgit.com/connected-web/web-component-js/1.2.3/tests/web-component-composer.html)
+Tools
+-----
+Web Component JS Composer - with Live Editor and JS Packager:
+* `tools/composer.html` [Web Component Composer for Creating File Includes](https://cdn.rawgit.com/connected-web/web-component-js/1.2.4/tools/composer.html)
 
-### Sample data
-* `data/credits.json` : [Static Data for Data Loading](https://cdn.rawgit.com/connected-web/web-component-js/1.2.3/tests/data/credits.json)
+The composer is a great way to play around with new templates and view the results in the live window. It also packs up your script, template and style tags into a JS packaged format which you can distribute via CDN or include by reference into local web pages.
 
-How to use
-----------
+### Sample Data
+Some example JSON data to help with the examples:
+* `data/credits.json` : [Github Credits](https://cdn.rawgit.com/connected-web/web-component-js/1.2.4/tests/data/credits.json)
+* `data/geoNames.json` : [Geo Names](https://cdn.rawgit.com/connected-web/web-component-js/1.2.4/tests/data/geoNames.json)
+* `data/monitorStatus.json` : [Monitor Status](https://cdn.rawgit.com/connected-web/web-component-js/1.2.4/tests/data/monitorStatus.json)
+* `data/navigation.json` : [Navigation for Examples](https://cdn.rawgit.com/connected-web/web-component-js/1.2.4/tests/data/navigation.json)
+
+Using Web Component JS
+----------------------
 1. Copy script tags for jQuery, Handlebars, and Web Component into the `<head></head>` of your HTML page
 2. Define a `<template for="your-custom-element"></template>` tag
 3. Insert your custom tags into the page
@@ -113,7 +117,7 @@ compiler.compile('lib', 'dist');
 2nd July 2015
 * Added NPM support and started work on compiler
 
-### 1.2.2 
+### 1.2.2
 30th June 2015
 * Added the self-resolving dependency script from the Composer to web-component.js
 * Changed project location to https://github.com/connected-web/web-component-js/
