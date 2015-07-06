@@ -29,21 +29,21 @@ Web Component is a javascript library that can convert custom HTML tags, like in
 
 Online Demos
 ------------
-* `index.html` : [Web Component JS - Index of Examples](https://cdn.rawgit.com/connected-web/web-component-js/1.2.4/tests/index.html)
+* `index.html` : [Web Component JS - Index of Examples](https://cdn.rawgit.com/connected-web/web-component-js/1.2.4b/tests/index.html)
 
 Tools
 -----
 Web Component JS Composer - with Live Editor and JS Packager:
-* `tools/composer.html` [Web Component Composer for Creating File Includes](https://cdn.rawgit.com/connected-web/web-component-js/1.2.4/tools/composer.html)
+* `tools/composer.html` [Web Component Composer for Creating File Includes](https://cdn.rawgit.com/connected-web/web-component-js/1.2.4b/tools/composer.html)
 
 The composer is a great way to play around with new templates and view the results in the live window. It also packs up your script, template and style tags into a JS packaged format which you can distribute via CDN or include by reference into local web pages.
 
 ### Sample Data
 Some example JSON data to help with the examples:
-* `data/credits.json` : [Github Credits](https://cdn.rawgit.com/connected-web/web-component-js/1.2.4/tests/data/credits.json)
-* `data/geoNames.json` : [Geo Names](https://cdn.rawgit.com/connected-web/web-component-js/1.2.4/tests/data/geoNames.json)
-* `data/monitorStatus.json` : [Monitor Status](https://cdn.rawgit.com/connected-web/web-component-js/1.2.4/tests/data/monitorStatus.json)
-* `data/navigation.json` : [Navigation for Examples](https://cdn.rawgit.com/connected-web/web-component-js/1.2.4/tests/data/navigation.json)
+* `data/credits.json` : [Github Credits](https://cdn.rawgit.com/connected-web/web-component-js/1.2.4b/tests/data/credits.json)
+* `data/geoNames.json` : [Geo Names](https://cdn.rawgit.com/connected-web/web-component-js/1.2.4b/tests/data/geoNames.json)
+* `data/monitorStatus.json` : [Monitor Status](https://cdn.rawgit.com/connected-web/web-component-js/1.2.4b/tests/data/monitorStatus.json)
+* `data/navigation.json` : [Navigation for Examples](https://cdn.rawgit.com/connected-web/web-component-js/1.2.4b/tests/data/navigation.json)
 
 Using Web Component JS
 ----------------------
