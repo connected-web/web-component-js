@@ -1,0 +1,55 @@
+<navbar data-source-url="/tests/data/navigation.json"></navbar>
+
+<template for="navbar">
+  <b>Navigation:</b> {{#each items}}
+  <navbar-item href="{{href}}">{{linkText}}</navbar-item>
+  {{/each}}
+</template>
+
+<template for="navbar-item">
+  <a href="{{href}}">{{content}}</a>
+</template>
+
+<style for="navbar">
+  navbar {
+    display: block;
+    background: #CCC;
+    border-radius: 2px;
+    padding: 5px;
+    font-size: 14px;
+    line-height: 1.1;
+  }
+
+  navbar-item {
+    display: inline-block;
+    background: #EEE;
+    padding: 5px;
+    border-radius: 8px;
+    margin: 2px;
+  }
+
+  navbar-item > a {
+    text-decoration: none;
+  }
+
+  navbar-item > a {
+    color: #337ab7;
+    text-decoration: none
+  }
+
+  navbar-item > a:focus,
+  navbar-item > a:hover {
+    color: #23527c;
+    text-decoration: underline
+  }
+
+  navbar-item > a:focus {
+    outline: thin dotted;
+    outline: 5px auto -webkit-focus-ring-color;
+    outline-offset: -2px
+  }
+</style>
+
+<markdown>
+  Navbar Component ================ Expected data format: ```json { "items": [{ "linkText": "Item 1", "href": "http://item1url/" }, { "linkText": "Item 2", "href": "http://item2url/" }, { "linkText": "Item 3", "href": "http://item3url/" }] }
+</markdown>
