@@ -237,7 +237,10 @@
           return v.toString(16);
         });
 
-        var template = Handlebars.compile($('template[for="autoloader"]').html());
+        var AutoloaderComponent = Component.configure('autoloader');
+        autoloaderTemplate = AutoloaderComponent.templateElement;
+
+        var template = Handlebars.compile(autoloaderTemplate.innerHTML);
         var result = template({
           scriptUUID: scriptUUID,
           encodedTemplateTags: encodedTemplateTags,
