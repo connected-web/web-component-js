@@ -4,7 +4,11 @@ A javascript library for very simply adding data driven web components to a HTML
 
 Recent Releases
 
-**Version 1.2.4** (In testing, supports loading of its own dependencies)
+**Version 1.2.5** (In testing)
+July 11th 2015
+* https://cdn.rawgit.com/connected-web/web-component-js/1.2.5/lib/web-component.js
+
+**Version 1.2.4** (Stable, supports loading of its own dependencies)
 July 6th 2015
 * https://cdn.rawgit.com/connected-web/web-component-js/1.2.4/lib/web-component.js
 
@@ -29,21 +33,21 @@ Web Component is a javascript library that can convert custom HTML tags, like in
 
 Online Demos
 ------------
-* `index.html` : [Web Component JS - Index of Examples](https://cdn.rawgit.com/connected-web/web-component-js/1.2.4b/tests/index.html)
+* `index.html` : [Web Component JS - Index of Examples](https://cdn.rawgit.com/connected-web/web-component-js/1.2.5/tests/index.html)
 
 Tools
 -----
 Web Component JS Composer - with Live Editor and JS Packager:
-* `tools/composer.html` [Web Component Composer for Creating File Includes](https://cdn.rawgit.com/connected-web/web-component-js/1.2.4b/tools/composer.html)
+* `tools/composer.html` [Web Component Composer for Creating File Includes](https://cdn.rawgit.com/connected-web/web-component-js/1.2.5/tools/composer.html)
 
 The composer is a great way to play around with new templates and view the results in the live window. It also packs up your script, template and style tags into a JS packaged format which you can distribute via CDN or include by reference into local web pages.
 
 ### Sample Data
 Some example JSON data to help with the examples:
-* `data/credits.json` : [Github Credits](https://cdn.rawgit.com/connected-web/web-component-js/1.2.4b/tests/data/credits.json)
-* `data/geoNames.json` : [Geo Names](https://cdn.rawgit.com/connected-web/web-component-js/1.2.4b/tests/data/geoNames.json)
-* `data/monitorStatus.json` : [Monitor Status](https://cdn.rawgit.com/connected-web/web-component-js/1.2.4b/tests/data/monitorStatus.json)
-* `data/navigation.json` : [Navigation for Examples](https://cdn.rawgit.com/connected-web/web-component-js/1.2.4b/tests/data/navigation.json)
+* `data/credits.json` : [Github Credits](https://cdn.rawgit.com/connected-web/web-component-js/1.2.5/tests/data/credits.json)
+* `data/geoNames.json` : [Geo Names](https://cdn.rawgit.com/connected-web/web-component-js/1.2.5/tests/data/geoNames.json)
+* `data/monitorStatus.json` : [Monitor Status](https://cdn.rawgit.com/connected-web/web-component-js/1.2.5/tests/data/monitorStatus.json)
+* `data/navigation.json` : [Navigation for Examples](https://cdn.rawgit.com/connected-web/web-component-js/1.2.5/tests/data/navigation.json)
 
 Using Web Component JS
 ----------------------
@@ -58,7 +62,7 @@ A complete example to get you started:
 <html>
 <head>
   <title>Web Component Examples - Index</title>
-  <script src="https://cdn.rawgit.com/connected-web/web-component-js/1.2.4/lib/web-component.js"></script>
+  <script src="https://cdn.rawgit.com/connected-web/web-component-js/1.2.5/lib/web-component.js"></script>
 
   <style for="page">
     body { padding: 20px; font-family: sans-serif; }
@@ -106,12 +110,18 @@ Please see the wiki for documentation and examples on using the Web Component li
 Changelog
 ---------
 ### Unreleased changes
-* Compiler for `*.component.html` files
+* Work in progress compiler for `*.component.html` files
 * Usage:
 ```js
 var compiler = require('../web-component-js').compiler;
 compiler.compile('lib', 'dist');
 ```
+
+### 1.2.5
+11th July 2015
+* Allowed element properties to be re-read into the component instance just before a data request is made
+* Added Modify Properties example page to demonstrate dynamically changing element properties on the fly
+* Fix for Component.configure('UPPERCASE-TAGNAME') creating an invalid lookup when using `element.tagName` as the source data.
 
 ### 1.2.4
 6th July 2015

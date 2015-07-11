@@ -14,5 +14,8 @@
   }, {
     "linkText": "Example 04 CDN Hosting",
     "href": "example-04-cdn-hosting.html"
+  }, {
+    "linkText": "Example 05 Modifying Properties",
+    "href": "example-05-modify-properties.html"
   }]
 }

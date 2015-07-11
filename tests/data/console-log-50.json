@@ -1,0 +1,205 @@
+{
+  "lineLimit": "50",
+  "lines": [{
+    "time": 1436643849006,
+    "date": "Sat, 11 Jul 2015 19:44:09 GMT",
+    "line": "[api-cache]: adding cache entry for \"/api/serverLog/10\" @ 10000 milliseconds\n"
+  }, {
+    "time": 1436643852209,
+    "date": "Sat, 11 Jul 2015 19:44:12 GMT",
+    "line": "[api-cache]: path \"/api/serverLog/50\" not found in cache\n"
+  }, {
+    "time": 1436643852209,
+    "date": "Sat, 11 Jul 2015 19:44:12 GMT",
+    "line": "[api-cache]: adding cache entry for \"/api/serverLog/50\" @ 10000 milliseconds\n"
+  }, {
+    "time": 1436643852959,
+    "date": "Sat, 11 Jul 2015 19:44:12 GMT",
+    "line": "[api-cache]: returning cached version of \"/api/serverLog/10\"\n"
+  }, {
+    "time": 1436643857194,
+    "date": "Sat, 11 Jul 2015 19:44:17 GMT",
+    "line": "[api-cache]: path \"/api/monitorStatus\" not found in cache\n"
+  }, {
+    "time": 1436643857194,
+    "date": "Sat, 11 Jul 2015 19:44:17 GMT",
+    "line": "[api-cache]: adding cache entry for \"/api/monitorStatus\" @ 10000 milliseconds\n"
+  }, {
+    "time": 1436643859616,
+    "date": "Sat, 11 Jul 2015 19:44:19 GMT",
+    "line": "[api-cache]: path \"/api/serverLog/10\" not found in cache\n"
+  }, {
+    "time": 1436643859616,
+    "date": "Sat, 11 Jul 2015 19:44:19 GMT",
+    "line": "[api-cache]: adding cache entry for \"/api/serverLog/10\" @ 10000 milliseconds\n"
+  }, {
+    "time": 1436643862569,
+    "date": "Sat, 11 Jul 2015 19:44:22 GMT",
+    "line": "[api-cache]: path \"/api/serverLog/50\" not found in cache\n"
+  }, {
+    "time": 1436643862569,
+    "date": "Sat, 11 Jul 2015 19:44:22 GMT",
+    "line": "[api-cache]: adding cache entry for \"/api/serverLog/50\" @ 10000 milliseconds\n"
+  }, {
+    "time": 1436643869695,
+    "date": "Sat, 11 Jul 2015 19:44:29 GMT",
+    "line": "[api-cache]: path \"/api/serverLog/10\" not found in cache\n"
+  }, {
+    "time": 1436643869695,
+    "date": "Sat, 11 Jul 2015 19:44:29 GMT",
+    "line": "[api-cache]: adding cache entry for \"/api/serverLog/10\" @ 10000 milliseconds\n"
+  }, {
+    "time": 1436643872330,
+    "date": "Sat, 11 Jul 2015 19:44:32 GMT",
+    "line": "[api-cache]: path \"/api/monitorStatus\" not found in cache\n"
+  }, {
+    "time": 1436643872330,
+    "date": "Sat, 11 Jul 2015 19:44:32 GMT",
+    "line": "[api-cache]: adding cache entry for \"/api/monitorStatus\" @ 10000 milliseconds\n"
+  }, {
+    "time": 1436643872810,
+    "date": "Sat, 11 Jul 2015 19:44:32 GMT",
+    "line": "[api-cache]: path \"/api/serverLog/50\" not found in cache\n"
+  }, {
+    "time": 1436643872810,
+    "date": "Sat, 11 Jul 2015 19:44:32 GMT",
+    "line": "[api-cache]: adding cache entry for \"/api/serverLog/50\" @ 10000 milliseconds\n"
+  }, {
+    "time": 1436643879757,
+    "date": "Sat, 11 Jul 2015 19:44:39 GMT",
+    "line": "[api-cache]: path \"/api/serverLog/10\" not found in cache\n"
+  }, {
+    "time": 1436643879757,
+    "date": "Sat, 11 Jul 2015 19:44:39 GMT",
+    "line": "[api-cache]: adding cache entry for \"/api/serverLog/10\" @ 10000 milliseconds\n"
+  }, {
+    "time": 1436643882841,
+    "date": "Sat, 11 Jul 2015 19:44:42 GMT",
+    "line": "[api-cache]: path \"/api/serverLog/50\" not found in cache\n"
+  }, {
+    "time": 1436643882841,
+    "date": "Sat, 11 Jul 2015 19:44:42 GMT",
+    "line": "[api-cache]: adding cache entry for \"/api/serverLog/50\" @ 10000 milliseconds\n"
+  }, {
+    "time": 1436643887541,
+    "date": "Sat, 11 Jul 2015 19:44:47 GMT",
+    "line": "[api-cache]: path \"/api/monitorStatus\" not found in cache\n"
+  }, {
+    "time": 1436643887541,
+    "date": "Sat, 11 Jul 2015 19:44:47 GMT",
+    "line": "[api-cache]: adding cache entry for \"/api/monitorStatus\" @ 10000 milliseconds\n"
+  }, {
+    "time": 1436643889908,
+    "date": "Sat, 11 Jul 2015 19:44:49 GMT",
+    "line": "[api-cache]: path \"/api/serverLog/10\" not found in cache\n"
+  }, {
+    "time": 1436643889908,
+    "date": "Sat, 11 Jul 2015 19:44:49 GMT",
+    "line": "[api-cache]: adding cache entry for \"/api/serverLog/10\" @ 10000 milliseconds\n"
+  }, {
+    "time": 1436643893333,
+    "date": "Sat, 11 Jul 2015 19:44:53 GMT",
+    "line": "[api-cache]: path \"/api/serverLog/50\" not found in cache\n"
+  }, {
+    "time": 1436643893333,
+    "date": "Sat, 11 Jul 2015 19:44:53 GMT",
+    "line": "[api-cache]: adding cache entry for \"/api/serverLog/50\" @ 10000 milliseconds\n"
+  }, {
+    "time": 1436643900214,
+    "date": "Sat, 11 Jul 2015 19:45:00 GMT",
+    "line": "[api-cache]: path \"/api/serverLog/10\" not found in cache\n"
+  }, {
+    "time": 1436643900214,
+    "date": "Sat, 11 Jul 2015 19:45:00 GMT",
+    "line": "[api-cache]: adding cache entry for \"/api/serverLog/10\" @ 10000 milliseconds\n"
+  }, {
+    "time": 1436643909506,
+    "date": "Sat, 11 Jul 2015 19:45:09 GMT",
+    "line": "[api-cache]: path \"/api/monitorStatus\" not found in cache\n"
+  }, {
+    "time": 1436643909506,
+    "date": "Sat, 11 Jul 2015 19:45:09 GMT",
+    "line": "[api-cache]: adding cache entry for \"/api/monitorStatus\" @ 10000 milliseconds\n"
+  }, {
+    "time": 1436643920026,
+    "date": "Sat, 11 Jul 2015 19:45:20 GMT",
+    "line": "[api-cache]: path \"/api/serverLog/50\" not found in cache\n"
+  }, {
+    "time": 1436643920026,
+    "date": "Sat, 11 Jul 2015 19:45:20 GMT",
+    "line": "[api-cache]: adding cache entry for \"/api/serverLog/50\" @ 10000 milliseconds\n"
+  }, {
+    "time": 1436643932021,
+    "date": "Sat, 11 Jul 2015 19:45:32 GMT",
+    "line": "[api-cache]: path \"/api/serverLog/10\" not found in cache\n"
+  }, {
+    "time": 1436643932021,
+    "date": "Sat, 11 Jul 2015 19:45:32 GMT",
+    "line": "[api-cache]: adding cache entry for \"/api/serverLog/10\" @ 10000 milliseconds\n"
+  }, {
+    "time": 1436643935891,
+    "date": "Sat, 11 Jul 2015 19:45:35 GMT",
+    "line": "[api-cache]: path \"/api/monitorStatus\" not found in cache\n"
+  }, {
+    "time": 1436643935891,
+    "date": "Sat, 11 Jul 2015 19:45:35 GMT",
+    "line": "[api-cache]: adding cache entry for \"/api/monitorStatus\" @ 10000 milliseconds\n"
+  }, {
+    "time": 1436643935922,
+    "date": "Sat, 11 Jul 2015 19:45:35 GMT",
+    "line": "[api-cache]: returning cached version of \"/api/monitorStatus\"\n"
+  }, {
+    "time": 1436643935922,
+    "date": "Sat, 11 Jul 2015 19:45:35 GMT",
+    "line": "[api-cache]: returning cached version of \"/api/navigation\"\n"
+  }, {
+    "time": 1436643935969,
+    "date": "Sat, 11 Jul 2015 19:45:35 GMT",
+    "line": "[api-cache]: path \"/api/serverLog/50\" not found in cache\n"
+  }, {
+    "time": 1436643935969,
+    "date": "Sat, 11 Jul 2015 19:45:35 GMT",
+    "line": "[api-cache]: adding cache entry for \"/api/serverLog/50\" @ 10000 milliseconds\n"
+  }, {
+    "time": 1436643936109,
+    "date": "Sat, 11 Jul 2015 19:45:36 GMT",
+    "line": "[api-cache]: returning cached version of \"/api/monitorStatus\"\n"
+  }, {
+    "time": 1436643946234,
+    "date": "Sat, 11 Jul 2015 19:45:46 GMT",
+    "line": "[api-cache]: path \"/api/serverLog/50\" not found in cache\n"
+  }, {
+    "time": 1436643946234,
+    "date": "Sat, 11 Jul 2015 19:45:46 GMT",
+    "line": "[api-cache]: adding cache entry for \"/api/serverLog/50\" @ 10000 milliseconds\n"
+  }, {
+    "time": 1436643951315,
+    "date": "Sat, 11 Jul 2015 19:45:51 GMT",
+    "line": "[api-cache]: path \"/api/monitorStatus\" not found in cache\n"
+  }, {
+    "time": 1436643951315,
+    "date": "Sat, 11 Jul 2015 19:45:51 GMT",
+    "line": "[api-cache]: adding cache entry for \"/api/monitorStatus\" @ 10000 milliseconds\n"
+  }, {
+    "time": 1436643956729,
+    "date": "Sat, 11 Jul 2015 19:45:56 GMT",
+    "line": "[api-cache]: path \"/api/serverLog/50\" not found in cache\n"
+  }, {
+    "time": 1436643956729,
+    "date": "Sat, 11 Jul 2015 19:45:56 GMT",
+    "line": "[api-cache]: adding cache entry for \"/api/serverLog/50\" @ 10000 milliseconds\n"
+  }, {
+    "time": 1436643966503,
+    "date": "Sat, 11 Jul 2015 19:46:06 GMT",
+    "line": "[api-cache]: path \"/api/monitorStatus\" not found in cache\n"
+  }, {
+    "time": 1436643966503,
+    "date": "Sat, 11 Jul 2015 19:46:06 GMT",
+    "line": "[api-cache]: adding cache entry for \"/api/monitorStatus\" @ 10000 milliseconds\n"
+  }, {
+    "time": 1436643967019,
+    "date": "Sat, 11 Jul 2015 19:46:07 GMT",
+    "line": "[api-cache]: path \"/api/serverLog/50\" not found in cache\n"
+  }],
+  "timestamp": 1436643967019
+}
