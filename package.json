@@ -29,5 +29,8 @@
   ],
   "dependencies": {
     "glob": "^5.0.13"
+  },
+  "devDependencies": {
+    "dirdiff": "0.0.1"
   }
 }
