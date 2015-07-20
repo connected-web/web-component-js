@@ -28,7 +28,8 @@
     "lib"
   ],
   "dependencies": {
-    "glob": "^5.0.13"
+    "glob": "^5.0.13",
+    "mkdirp": "^0.5.1"
   },
   "devDependencies": {
     "colors": "^1.1.2",
