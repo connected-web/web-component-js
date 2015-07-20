@@ -28,6 +28,7 @@
     "lib"
   ],
   "dependencies": {
+    "cheerio": "^0.19.0",
     "glob": "^5.0.13",
     "mkdirp": "^0.5.1"
   },
