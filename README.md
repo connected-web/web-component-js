@@ -101,6 +101,13 @@ Then open http://localhost:8080 in a web-browser of your choice.
 
 Edits can be made to `lib/web-component.js` directly, and you can use the HTML files in `tests/` as harnesses for various situations. Preferred browser for debugging is Chrome.
 
+### Local tests
+To run tests against the web-component-js compiler, use:
+```
+npm test
+```
+This will run a series of compilation tests that convert sample components into a compiled format, based on a dependency resolution template, and then diff them against an expected output.
+
 Web Component Wiki
 ------------------
 
