@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Web Component Examples - Find Component by ID</title>
+
+  <!-- Web Component JS Files under test -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script src="../lib/web-component.js"></script>
+  <script src="components/navbar.component.js"></script>
+
+  <!-- All the boostrap theming -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+  <style for="page">
+    body {
+      padding: 20px;
+      font-family: sans-serif;
+    }
+  </style>
+
+</head>
+
+<body>
+  <navbar data-source-url="data/navigation.json"></navbar>
+
+  <h1>Web Component Examples - Find Component by ID</h1>
+
+  <p>In this example, nested components can communicate back to their parent.</p>
+  <p>This is acheived by passing an ID down through the templating system, and then using <code>Component.findByElement(element)</code> to find the component instance from an element in the DOM.</p>
+
+  <h4>Tyre Compounds</h4>
+  <dynamic id="tyre-compounds">
+    <nested target="{{id}}">Soft</nested>
+    <nested target="{{id}}">Medium</nested>
+    <nested target="{{id}}">Hard</nested>
+  </dynamic>
+
+  <h4>Petrol Tank</h4>
+  <dynamic id="petrol-tank">
+    <nested target="{{id}}">Empty</nested>
+    <nested target="{{id}}">25%</nested>
+    <nested target="{{id}}">50%</nested>
+    <nested target="{{id}}">75%</nested>
+    <nested target="{{id}}">Full</nested>
+  </dynamic>
+
+  <h4>Suspension</h4>
+  <dynamic id="suspension-setting">
+    <nested target="{{id}}">Springy</nested>
+    <nested target="{{id}}">Medium</nested>
+    <nested target="{{id}}">Firm</nested>
+  </dynamic>
+
+  <!-- Templates -->
+  <style for="button">
+    button {
+      width: 80px;
+    }
+  </style>
+
+  <template for="dynamic" some-value="Not Set">
+    <button class="btn btn-warning">{{some-value}}</button>
+    {{content}}
+  </template>
+
+  <template for="nested" target="notset">
+    <button class="btn btn-success">{{content}}</button>
+  </template>
+
+  <script for="nested" type="text/javascript">
+    $(function() {
+      var NestedComponent = Component.configure('nested');
+
+      NestedComponent.on('renderComplete', function(instance) {
+        $(instance.element).click(function() {
+          var target = Component.findByElement(document.getElementById(instance.target));
+          if (target) {
+            target['some-value'] = instance.content;
+            target.render();
+          }
+        });
+      });
+
+      NestedComponent.apply(function(instance) {
+        instance.render();
+      });
+    });
+  </script>
+
+  <!-- Set Property Component -->
+  <template for="set-property">
+    <button class="btn btn-default">{{content}}</button>
+  </template>
+
+  <script for="set-property" type="text/javascript">
+    Component.queuedItems.push(function() {
+      var SetPropertyComponent = Component.configure('set-property');
+
+      SetPropertyComponent.on('renderComplete', function(instance) {
+        $(instance.element).click(function() {
+          // Find and change the property on the target
+          var target = $('#' + instance.target);
+          target.attr(instance.property, instance.value);
+          console.log('Changing', instance.property, 'to', instance.value, 'on', instance.target);
+
+          // Refresh the element if its a web component
+          var webComponentId = target.attr("webcomponentid");
+          if (webComponentId) {
+            var componentClass = Component.configure(target[0].tagName);
+            var component = componentClass.registeredInstances[webComponentId];
+            component.refresh();
+          };
+        });
+      });
+
+      SetPropertyComponent.apply(function(instance) {
+        instance.render();
+      });
+    });
+  </script>
+</body>
+
+</html>
