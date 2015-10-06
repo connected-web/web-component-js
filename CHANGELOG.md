@@ -9,6 +9,10 @@ var compiler = require('../web-component-js').compiler;
 compiler.compile('lib', 'dist');
 ```
 
+### 1.2.6
+6th October 2015
+* Added `Component.findByElement` to API, with worked example
+
 ### 1.2.5
 11th July 2015
 * Allowed element properties to be re-read into the component instance just before a data request is made
