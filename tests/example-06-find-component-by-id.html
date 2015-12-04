@@ -29,7 +29,8 @@
   <h1>Web Component Examples - Find Component by ID</h1>
 
   <p>In this example, nested components can communicate back to their parent.</p>
-  <p>This is acheived by passing an ID down through the templating system, and then using <code>Component.findByElement(element)</code> to find the component instance from an element in the DOM.</p>
+  <p>This is acheived by passing an ID down through the templating system, and then using
+    <code>Component.findByElement(element)</code> to find the component instance from an element in the DOM.</p>
 
   <h4>Tyre Compounds</h4>
   <dynamic id="tyre-compounds">
@@ -85,6 +86,7 @@
       });
 
       NestedComponent.apply(function(instance) {
+        console.log('Here', instance)
         instance.render();
       });
     });

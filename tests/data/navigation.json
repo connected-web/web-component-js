@@ -20,5 +20,8 @@
   }, {
     "linkText": "Find Component by ID",
     "href": "example-06-find-component-by-id.html"
+  }, {
+    "linkText": "Bug Testing",
+    "href": "example-07-bug-testing.html"
   }]
 }
