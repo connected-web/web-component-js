@@ -1,6 +1,6 @@
 {
   "name": "web-component-js",
-  "version": "1.2.6",
+  "version": "1.2.7",
   "description": "A javascript library for very simply adding data driven web components to a HTML page, by defining your own domain specific, HTML language via templates.",
   "main": "lib/npm-module.js",
   "directories": {

@@ -9,6 +9,10 @@ var compiler = require('../web-component-js').compiler;
 compiler.compile('lib', 'dist');
 ```
 
+### 1.2.7
+4th December 2015
+* Added try/catch block for Handlebars Template expansion to provide helpful information when a bad template is supplied.
+
 ### 1.2.6
 6th October 2015
 * Added `Component.findByElement` to API, with worked example
