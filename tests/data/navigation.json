@@ -3,22 +3,25 @@
     "linkText": "Index of Examples",
     "href": "index.html"
   }, {
-    "linkText": "Example 01 Data Loading",
+    "linkText": "Data Loading",
     "href": "example-01-data-loading.html"
   }, {
-    "linkText": "Example 02 Nesting",
+    "linkText": "Nesting",
     "href": "example-02-nesting.html"
   }, {
-    "linkText": "Example 03 Geo Data",
+    "linkText": "Geo Data",
     "href": "example-03-geodata.html"
   }, {
-    "linkText": "Example 04 CDN Hosting",
+    "linkText": "CDN Hosting",
     "href": "example-04-cdn-hosting.html"
   }, {
-    "linkText": "Example 05 Modifying Properties",
+    "linkText": "Modifying Properties",
     "href": "example-05-modify-properties.html"
   }, {
-    "linkText": "Example 06 Bug Testing",
-    "href": "example-06-bug-testing.html"
+    "linkText": "Find Component by ID",
+    "href": "example-06-find-component-by-id.html"
+  }, {
+    "linkText": "Bug Testing",
+    "href": "example-07-bug-testing.html"
   }]
 }

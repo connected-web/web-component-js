@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Web Component Examples - Bug Testing</title>
+
+  <!-- Web Component JS Files under test -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script src="../lib/web-component.js"></script>
+  <script src="components/markdown.component.js"></script>
+  <script src="components/navbar.component.js"></script>
+
+  <style for="page">
+    body {
+      padding: 20px;
+      font-family: sans-serif;
+    }
+  </style>
+
+</head>
+
+<body>
+  <navbar data-source-url="data/navigation.json"></navbar>
+
+  <h1>Web Component Examples - Bug Testing</h1>
+
+  <h2>Handlebar Errors</h2>
+  <p><a href="https://github.com/connected-web/web-component-js/issues/10">Handlebars throws JavaScript errors that are uncaught, and cause the page to crash.</a>
+
+  <broken-template>Broken Template</broken-template>
+
+  <template for="broken-template">
+      {{#each}}
+        <b>{{contents}}</b>
+      {{/mistmatched each}}
+  </template>
+
+  <h2>Empty tags Terminate Execution</h2>
+  <p><a href="https://github.com/connected-web/web-component-js/issues/9">Nothing renders after the first self closing tag.</a></p>
+
+  <!--
+  <template for="chair">
+    {{name}}
+  </template>
+
+  <chair name="John" />
+  <chair name="Anna" />
+  <chair name="Damian" />
+  -->
+
+  <h3>Resolution</h3>
+  <markdown>
+Can't fix, self-closing tags are not advised, nor supported by most major browsers:
+* http://www.w3.org/TR/html4/appendix/notes.html#h-B.3.3
+* http://stackoverflow.com/questions/3558119/are-self-closing-tags-valid-in-html5
+* http://dev.w3.org/html5/spec-author-view/syntax.html#syntax-start-tag
+
+They're known as void elements, and include:
+* area, base, br, col, embed, hr, img, input, keygen, link, menuitem, meta, param, source, track, wbr
+* http://www.w3.org/html/wg/drafts/html/master/single-page.html#void-elements
+
+> Void elements can't have any contents (since there's no end tag, no content can be put between the start tag and the end tag).
+
+Web Component JS doesn't perform any direct interactions with these elements, instead, the DOM of the browser strips them out before any JavaScript can kick in.
+  </markdown>
+
+</body>
+
+</html>
