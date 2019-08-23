@@ -9,6 +9,10 @@ var compiler = require('../web-component-js').compiler;
 compiler.compile('lib', 'dist');
 ```
 
+### 1.2.8
+23rd August 2019
+* Fix bug with autoloading of external scripts; removed dead checks
+
 ### 1.2.7
 4th December 2015
 * Added try/catch block for Handlebars Template expansion to provide helpful information when a bad template is supplied.
