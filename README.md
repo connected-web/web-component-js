@@ -1,6 +1,6 @@
 Web Component JS
 ================
-A javascript library for very simply adding data driven web components to a HTML page, by defining your own domain specific, HTML language via templates.
+A JavaScript library for very simply adding data-driven web components to an HTML page, by defining your own domain-specific HTML language via templates.
 
 Recent Releases
 
@@ -24,7 +24,7 @@ July 11th 2015
 July 6th 2015
 * https://cdn.rawgit.com/connected-web/web-component-js/1.2.4/lib/web-component.js
 
-**Version 1.2.0** (Seems stable, old style depdendency errors)
+**Version 1.2.0** (Seems stable, old-style dependency errors)
 30th June 2015
 * https://cdn.rawgit.com/connected-web/web-component-js/1.2.0/lib/web-component.js
 
@@ -35,7 +35,7 @@ Dependencies
 
 What it can do
 --------------
-Web Component is a javascript library that can convert custom HTML tags, like in this example...
+Web Component is a JavaScript library that can convert custom HTML tags, like in this example...
 
 ![Web Component Data Loading Example Source](images/data-loading-example-source.png)
 
@@ -56,7 +56,7 @@ The composer is a great way to play around with new templates and view the resul
 
 ### Sample Data
 Some example JSON data to help with the examples:
-* `data/credits.json` : [Github Credits](https://cdn.jsdelivr.net/gh/connected-web/web-component-js@1.2.8/tests/data/credits.json)
+* `data/credits.json` : [GitHub Credits](https://cdn.jsdelivr.net/gh/connected-web/web-component-js@1.2.8/tests/data/credits.json)
 * `data/geoNames.json` : [Geo Names](https://cdn.jsdelivr.net/gh/connected-web/web-component-js@1.2.8/tests/data/geoNames.json)
 * `data/monitorStatus.json` : [Monitor Status](https://cdn.jsdelivr.net/gh/connected-web/web-component-js@1.2.8/tests/data/monitorStatus.json)
 * `data/navigation.json` : [Navigation for Examples](https://cdn.jsdelivr.net/gh/connected-web/web-component-js@1.2.8/tests/data/navigation.json)
@@ -128,5 +128,5 @@ This will run a series of compilation tests that convert sample components into 
 Web Component Wiki
 ------------------
 
-Please see the wiki for documentation and examples on using the Web Component library and extending custom components with your own javascript.
-* [Web Component API] (https://github.com/Markavian/web-component/wiki/Web-Component-API)
+Please see the wiki for documentation and examples on using the Web Component library and extending custom components with your own JavaScript.
+* [Web Component API](https://github.com/Markavian/web-component/wiki/Web-Component-API)
