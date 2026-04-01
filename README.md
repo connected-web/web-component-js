@@ -103,6 +103,11 @@ Projects using Web Component
 ----------------------------
 * [Product Monitor](https://github.com/johnbeech/product-monitor/) - for rendering pretty much everything client side.
 
+Node.js runtime
+--------------
+This project now targets **Node.js 24** for local development and CI.
+Use the checked-in `.nvmrc` to select the version (for example: `nvm use`).
+
 Local development setup
 -------------------
 ```
